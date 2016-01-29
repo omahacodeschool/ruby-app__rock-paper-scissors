@@ -60,7 +60,7 @@ end
 
 And then a display method that calls the `winner` method in its body:
 
-```
+```ruby
 def display_winner
   if winner == nil
     puts "No winner! Tie game."

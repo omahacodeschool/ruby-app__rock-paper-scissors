@@ -12,6 +12,8 @@ So your first step is still to **fork** this repository and then **clone** it lo
 
 You're _not_ expected to have memorized those files and their contents though. Just refer to a previous project, like the String Segmentation toy problem, and make a duplicate file structure.
 
+**NOTE:** After creating the files and folder structure, you will need to run `chmod +x bin/*` from the project's directory in iTerm.
+
 ---
 
 ### Phase 1 - Build Rock-Paper-Scissors

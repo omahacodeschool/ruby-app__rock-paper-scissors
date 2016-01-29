@@ -21,11 +21,11 @@ while score.values.max < 3
 
 	if (p1 == "scissors" && p2 == "paper") || (p1 == "rock" && p2 == "scissors") || (p1 == "paper" && p2 == "rock")
 		score["#{player1}"] += 1
-	 	puts "#{player1.upcase}" + " WINS!"
+	 	puts "#{player1.capitalize}" + " wins this round."
   
 	elsif (p2 == "scissors" && p1 == "paper") || (p2 == "rock" && p1 == "scissors") || (p2 == "paper" && p1 == "rock")
 		score["#{player2}"] += 1
-	  	puts "#{player2.upcase}" + " WINS!"
+	  	puts "#{player2.capitalize}" + " wins this round."
 
 	else
  	 	puts "It's a draw!"
@@ -34,7 +34,7 @@ while score.values.max < 3
 	puts score
 end
 
-puts "#{score.max_by{|k,v| v}[0]}" + " WINS OVERALL!!!"
+puts "#{score.max_by{|k,v| v}[0].upcase}" + " WINS OVERALL!!!"
 
 # def get_player_name(str)
 # end

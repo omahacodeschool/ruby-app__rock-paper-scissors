@@ -6,32 +6,35 @@ puts "Player two, please type your name."
 puts "\n-------------------------------------------------------"
 player2 = gets.chomp.capitalize
 
-puts "#{player1}" +", please type rock, paper, or scissors"
-puts "\n-------------------------------------------------------"
-p1 = gets.chomp.downcase
-
-puts "#{player2}" +", please type rock, paper, or scissors"
-puts "\n-------------------------------------------------------"
-p2 = gets.chomp.downcase
-
-puts "#{player1}" + " chose " + "#{p1}" + ". " + "#{player2}" + " chose " + "#{p2}" + "."
-
 score = {"#{player1}" => 0, "#{player2}" => 0}
 
-if (p1 == "scissors" && p2 == "paper") || (p1 == "rock" && p2 == "scissors") || (p1 == "paper" && p2 == "rock")
-	score["#{player1}"] += 1
- 	puts "#{player1.upcase}" + " WINS!"
+while score.values.max < 3
+	puts "#{player1}" +", please type rock, paper, or scissors"
+	puts "\n-------------------------------------------------------"
+	p1 = gets.chomp.downcase
+
+	puts "#{player2}" +", please type rock, paper, or scissors"
+	puts "\n-------------------------------------------------------"
+	p2 = gets.chomp.downcase
+
+	puts "#{player1}" + " chose " + "#{p1}" + ". " + "#{player2}" + " chose " + "#{p2}" + "."
+
+	if (p1 == "scissors" && p2 == "paper") || (p1 == "rock" && p2 == "scissors") || (p1 == "paper" && p2 == "rock")
+		score["#{player1}"] += 1
+	 	puts "#{player1.upcase}" + " WINS!"
   
-elsif (p2 == "scissors" && p1 == "paper") || (p2 == "rock" && p1 == "scissors") || (p2 == "paper" && p1 == "rock")
+	elsif (p2 == "scissors" && p1 == "paper") || (p2 == "rock" && p1 == "scissors") || (p2 == "paper" && p1 == "rock")
 		score["#{player2}"] += 1
-  	puts "#{player2.upcase}" + " WINS!"
+	  	puts "#{player2.upcase}" + " WINS!"
 
-else
-  	puts "It's a draw!"
+	else
+ 	 	puts "It's a draw!"
   
+	end
+	puts score
 end
-puts score
 
+puts "#{score.max_by{|k,v| v}[0]}" + " WINS OVERALL!!!"
 
 # def get_player_name(str)
 # end

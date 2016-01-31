@@ -39,4 +39,5 @@ class RockPaperScissorsTest < Minitest::Test
 		score = {"#{player1}" => 3, "#{player2}" => 2}
 		assert_equal(false, overall_draw?(score, player1, player2))
 	end
+	
 end

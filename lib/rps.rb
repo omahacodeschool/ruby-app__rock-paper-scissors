@@ -33,7 +33,12 @@ end
 #Returns a player's name
 def get_player_input
 	puts "\n-------------------------------------------------------"
-	return gets.chomp.downcase
+	input = gets.chomp.downcase
+		while input != "rock" && input != "paper" && input != "scissors"
+			puts "Please try typing that again."
+			input = gets.chomp.downcase
+		end
+		return input
 end
 
 #Check to see if it's an overall draw
@@ -48,52 +53,69 @@ def overall_draw?(score, player1, player2)
 end
 
 
-# def game_on
-# 	puts "Player one, please type your name."
-# 	player1 = get_player_name
+def game_on
 
-# 	puts "Player two, please type your name."
-# 	player2 = get_player_name
+	puts "If you would like to play against the computer, please type 'yes'."
+	computer_game = gets.chomp.downcase
 
-# 	puts "Please type how many rounds you would like to play."
-# 	number_of_games = gets.chomp.to_i
+	puts "Player one, please type your name."
+	player1 = get_player_name
 
-# 	round_number = 0
+	if computer_game == "yes" 
 
-# 	score = {"#{player1}" => 0, "#{player2}" => 0}
+		player2 = "Hal"
 
-# 	while round_number < number_of_games #score.values.max < 3
+	else
+	
+		puts "Player two, please type your name."
+		player2 = get_player_name
 
-# 		puts "#{player1}" +", please type rock, paper, or scissors"
-# 		p1 = get_player_input
+	end
 
-# 		puts "#{player2}" +", please type rock, paper, or scissors"
-# 		p2 = get_player_input
+	puts "Please type how many rounds you would like to play."
+	number_of_games = gets.chomp.to_i
 
-# 		puts "#{player1}" + " chose " + "#{p1}" + ". " + "#{player2}" + " chose " + "#{p2}" + "."
+	round_number = 0
 
-# 		if draw?(p1, p2)
-# 	 	 	puts "It's a draw!"
+	score = {"#{player1}" => 0, "#{player2}" => 0}
 
-# 		elsif if_player_1_wins?(p1, p2)
-# 			score["#{player1}"] += 1
-# 		 	puts "#{player1.capitalize}" + " wins this round."
+	while round_number < number_of_games #score.values.max < 3
+		puts "#{player1}" +", please type rock, paper, or scissors"
+		p1 = get_player_input
 
-# 		elsif !if_player_1_wins?(p1, p2)
-# 			score["#{player2}"] += 1
-# 		  	puts "#{player2.capitalize}" + " wins this round."
+		if computer_game == "yes"
+			p2 = %w[rock paper scissors].sample
 
-# 		end
-# 		puts score
-# 		round_number += 1
-# 	end
-# 	if overall_draw?(score, player1, player2)
-# 		puts "No one wins overall game."
+		else
+			puts "#{player2}" +", please type rock, paper, or scissors"
+			p2 = get_player_input
 
-# 	else !overall_draw?(score, player1, player2)
-# 		puts "#{score.max_by{|k,v| v}[0].upcase}" + " WINS OVERALL!!!"
-# 	end
-# end
+		end
+
+		puts "#{player1}" + " chose " + "#{p1}" + ". " + "#{player2}" + " chose " + "#{p2}" + "."
+
+		if draw?(p1, p2)
+	 	 	puts "It's a draw!"
+
+		elsif if_player_1_wins?(p1, p2)
+			score["#{player1}"] += 1
+		 	puts "#{player1.capitalize}" + " wins this round."
+
+		elsif !if_player_1_wins?(p1, p2)
+			score["#{player2}"] += 1
+		  	puts "#{player2.capitalize}" + " wins this round."
+
+		end
+		puts score
+		round_number += 1
+	end
+	if overall_draw?(score, player1, player2)
+		puts "No one wins overall game."
+
+	else !overall_draw?(score, player1, player2)
+		puts "#{score.max_by{|k,v| v}[0].upcase}" + " WINS OVERALL!!!"
+	end
+end
 
 
-# game_on
+game_on

@@ -1,8 +1,10 @@
 def rock_paper_scissors
 
-  #INITIALIZE VARIABLE FOR PLAY AGAIN OPTION
-  y = $play_again_answer
-  while y == $play_again_answer do
+  #INITIALIZE VARIABLES FOR PLAY AGAIN OPTION
+  #y = $play_again_answer
+  $player_1_score = 0
+  $player_2_score = 0
+  #while y == $play_again_answer do
     
     #INITIAL SETUP OF PLAYERS
     puts "Welcome to Rock-Paper-Scissors!"
@@ -37,8 +39,8 @@ def rock_paper_scissors
 
     #SCOREBOARD
 
-    $player_1_score = 0
-    $player_2_score = 0
+    #$player_1_score = 0
+    #$player_2_score = 0
     puts "SCOREBOARD"
     puts
     puts "#{$player_1_name} #{$player_1_score}"
@@ -107,9 +109,9 @@ def rock_paper_scissors
       end
     end
 
-      #MATCH DISPENSATION
+        #MATCH DISPENSATION
 
-      #ANNOUNCEMENT OF THE WINNER
+        #ANNOUNCEMENT OF THE WINNER
     if  $player_1_score == $player_victory 
         puts 
         puts "Congratulations #{$player_1_name}"
@@ -123,17 +125,17 @@ def rock_paper_scissors
         puts 
     end
 
-      #THIS IS NOT OVER, BUDDY!
+    #     #THIS IS NOT OVER, BUDDY!
 
-        puts "Would you like to play again?"
-        puts "Enter 'y' for 'yes' or 'n' for 'no"
-        $play_again_answer = gets.chomp.downcase
-        puts #{$play_again_answer}
-    if  y == #{$play_again_answer} 
-        $player_1_score = 0
-        $player_2_score = 0
+    #     puts "Would you like to play again?"
+    #     puts "Enter 'y' for 'yes' or 'n' for 'no"
+    #     $play_again_answer = gets.chomp.downcase
+    #     puts 
+    # if  y == $play_again_answer 
+    #     $player_1_score = 0
+    #     $player_2_score = 0
   
-    else
+    # else
         puts "Goodbye for now."
     end
   end
@@ -162,10 +164,10 @@ end
 # result == -1 #POINT TO PLAYER_2
 
 # if result == 1
-#   Player_1_score += Player_1_score
+#   Player_1_score += 1
 
 # elsif result == -1
-#   Player_2_score += Player_2_score
+#   Player_2_score += 1
 #
 
 

@@ -1,18 +1,10 @@
-count = 0
+require_relative 'animals'
 
-while count < 10
-  count += 1
-  if count == 5
-    puts 'look alive 5'
-  end
+gatsby = Cat.new("burglargh", "white")
+puts gatsby.describe_animal
+gatsby.set_noise("moooooo")
+puts gatsby.describe_animal
 
-  if count == 3 
-    puts 'it is me 3'
-  end
+viceroy = Cat.new("reeeeee", "black")
 
-  if count == 7
-    puts '7 is heaven'
-  end
-
-  puts count 
-end
+puts viceroy.describe_animal

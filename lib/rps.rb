@@ -8,7 +8,6 @@ def if_player_1_wins?(p1, p2)
 	(p1 == "scissors" && p2 == "paper") || (p1 == "rock" && p2 == "scissors") || (p1 == "paper" && p2 == "rock")
 end
 
-
 #Check to see if it's a draw
 #
 # p1 - The String that is player one's input
@@ -19,44 +18,39 @@ def draw?(p1, p2)
 	p1 == p2
 end
 
-
-
 #Get a player's name
-#
 #
 #
 #Returns a player's name
 def get_player_name
+	puts "\n-------------------------------------------------------"
 	return gets.chomp.capitalize
 end
 
 #Get a player's name
 #
 #
-#
 #Returns a player's name
 def get_player_input
+	puts "\n-------------------------------------------------------"
 	return gets.chomp.downcase
 end
 
 
 puts "Player one, please type your name."
-puts "\n-------------------------------------------------------"
 player1 = get_player_name
 
 puts "Player two, please type your name."
-puts "\n-------------------------------------------------------"
 player2 = get_player_name
 
 score = {"#{player1}" => 0, "#{player2}" => 0}
 
 while score.values.max < 3
+
 	puts "#{player1}" +", please type rock, paper, or scissors"
-	puts "\n-------------------------------------------------------"
 	p1 = get_player_input
 
 	puts "#{player2}" +", please type rock, paper, or scissors"
-	puts "\n-------------------------------------------------------"
 	p2 = get_player_input
 
 	puts "#{player1}" + " chose " + "#{p1}" + ". " + "#{player2}" + " chose " + "#{p2}" + "."

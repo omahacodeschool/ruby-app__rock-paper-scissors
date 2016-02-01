@@ -82,13 +82,11 @@ end
 def initialize_game()
   @max_games = 0
   @played_games = 0
-
   @max_games = start_game(@max_games)
   @player1 = Main_rps.new()
   @player2 = Main_rps.new()
-
-  @player1.set_name
-  @player2.set_name
+  @player1.set_name()
+  @player2.set_name()
 end
 
 def determine_set_winner(wins1, wins2)

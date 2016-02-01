@@ -11,18 +11,17 @@ class Weapon
 
     case weapon
     when "rock"
-      @weapon = "rock"
+      weapon = "rock"
     when "paper"
-      @weapon = "paper"
+      weapon = "paper"
     when "scissors"
-      @weapon = "scissors"
+      weapon = "scissors"
     when "lizard"
-      @weapon = "lizard"
+      weapon = "lizard"
     when "spock"
-      @weapon = "spock"
+      weapon = "spock"
     else
       puts "That's not a valid choice, you goon. Pick again."
-      set_weapon()
     end
    
     @weapon = weapon

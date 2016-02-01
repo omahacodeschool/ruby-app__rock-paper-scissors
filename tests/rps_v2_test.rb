@@ -7,7 +7,6 @@ class RockPaperScissorsTest < Minitest::Test
 		sample_game =  RockPaperScissorsGame.new
 		sample_game.set_p1_weapon("rock")
 		sample_game.set_p2_weapon("scissors")
-		@win_hash = {"paper" => ["scissors", "lizard"], "scissors" => ["rock", "spock"], "rock" => ["paper", "spock"], "lizard" => ["rock", "scissors"], "spock" => ["paper", "lizard"]}
 	  	assert_equal(@player1, sample_game.find_winner)
 	end
 
@@ -15,7 +14,6 @@ class RockPaperScissorsTest < Minitest::Test
 		sample_game =  RockPaperScissorsGame.new
 		sample_game.set_p1_weapon("scissors")
 		sample_game.set_p2_weapon("rock")
-		@win_hash = {"paper" => ["scissors", "lizard"], "scissors" => ["rock", "spock"], "rock" => ["paper", "spock"], "lizard" => ["rock", "scissors"], "spock" => ["paper", "lizard"]}
 	  	assert_equal(@player2, sample_game.find_winner)
 	end
 
@@ -24,7 +22,6 @@ class RockPaperScissorsTest < Minitest::Test
 		sample_game =  RockPaperScissorsGame.new
 		sample_game.set_p1_weapon("rock")
 		sample_game.set_p2_weapon("rock")
-		@win_hash = {"paper" => ["scissors", "lizard"], "scissors" => ["rock", "spock"], "rock" => ["paper", "spock"], "lizard" => ["rock", "scissors"], "spock" => ["paper", "lizard"]}
 	  	assert_equal(nil, sample_game.find_winner)
 	end
 

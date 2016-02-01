@@ -5,17 +5,62 @@ require_relative 'RPS_score_count'
 class Main_rps
 
   def initialize()
-    @player_name = "player_name"
+    @player_name = ""
+    @other_player_name = ""
+    @max_games = 0
+    @played_games = 0
     @weapon = Weapon.new()
     @score_count = Score_count.new()
 
+  def establish_players()
+    set_name()
+    set_other_name()
+  end
+
+  def reset_player_weapons()
+   @weapon.reset_player_weapons()
+  end
+
+  def play_through_set()
+    while @played_games < @max_games do
+      reset_player_weapons()
+      set_battle()
+      puts battle_outcome()
+      reset_player_weapons()
+      set_played_games()
+    end
+  end
+
+  def set_max_games()
+    puts "Let's play 'Rock, Paper Scissors!'"
+    print "How many games do you want to play?  "
+    max_games = gets.chomp.to_i
+    @max_games = max_games
+  end
+
+  def get_max_games()
+    return @max_games
+  end
+
+  def set_played_games()
+      @played_games += 1
+  end
+
+  def get_played_games()
+      return @played_games
   end
 
   def set_name()
-     print "PLAYER, enter your name:  "
+     print "PLAYER ONE, enter your name:  "
      player_name = gets.chomp
      @player_name = player_name
      
+  end
+
+   def set_other_name()
+     print "PLAYER TWO, enter your name:  "
+     other_player_name = gets.chomp
+     @other_player_name = other_player_name 
   end
 
   # DOES: 
@@ -27,8 +72,16 @@ class Main_rps
     return @player_name
   end
 
+  def get_other_name()
+    return @other_player_name
+  end
+
   def set_games_won()
-    @score_count.set_games_won
+    @score_count.set_games_won()
+  end
+
+  def set_other_games_won()
+     @score_count.set_other_games_won()
   end
 
   # DOES: 
@@ -37,7 +90,11 @@ class Main_rps
   #
   # Returns Integer
   def get_games_won()
-    return @score_count.get_games_won
+    return @score_count.get_games_won()
+  end
+
+  def get_other_games_won()
+     @score_count.get_other_games_won()
   end
 
   def set_games_tied()
@@ -57,6 +114,10 @@ class Main_rps
     @weapon.set_weapon()
   end
 
+  def set_other_weapon()
+    @weapon.set_other_weapon()
+  end
+
   # DOES: 
   #
   # @weapon.get_weapon()
@@ -66,11 +127,40 @@ class Main_rps
     return @weapon.get_weapon()
   end
 
+  def get_other_weapon()
+    return @weapon.get_other_weapon()
+  end
+
+  def set_battle()
+   @weapon.set_battle()
+  end
+
+  def get_battle()
+      return @weapon.get_battle()
+  end
+
+
+  def battle_outcome()
+    return @weapon.battle_outcome()
+  end
+
+  def set_determine_set_winner()
+    @score_count.set_determine_set_winner()
+  end
+
+  def get_determine_set_winner()
+    @score_count.get_determine_set_winner()
+  end
+
   # DOES: 
   #
   # Returns String
   def get_victory_confirmation()
     return "#{get_name} wins with #{get_weapon}!"
+  end
+
+  def get_other_victory_confirmation()
+    return "#{get_other_name} wins with #{get_other_weapon}!"
   end
 
   # DOES: 
@@ -80,11 +170,26 @@ class Main_rps
     return "#{get_name} loses with #{get_weapon}!"
   end
 
+  def get_other_loss_confirmation()
+    return "#{get_other_name} loses with #{get_other_weapon}!"
+  end
+
   # DOES: 
   #
   # Returns String
   def get_tie_confirmation()
     return "Both players tie with #{get_weapon}!"
   end
+
+  def run_game()
+    
+    set_max_games()
+    establish_players
+    puts play_through_set()
+    set_determine_set_winner()
+    puts get_determine_set_winner()
+
+  end
   
+end
 end

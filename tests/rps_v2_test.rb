@@ -28,10 +28,10 @@ class RockPaperScissorsTest < Minitest::Test
 	  	assert_equal(nil, sample_game.find_winner)
 	end
 
-	def test_overall_draw_true
+	def test_overall_draw_false
 		sample_game =  RockPaperScissorsGame.new
-		@player1 = "Beth"
-		@player2 = "Hal"
+		@player1 = sample_game.set_p1_name("Beth")
+		@player2 = sample_game.set_p2_name("Hal")
 		score = {@player1 => 3, @player2 => 3}
 
 		assert_equal(true, sample_game.overall_draw?(score))
@@ -39,8 +39,8 @@ class RockPaperScissorsTest < Minitest::Test
 
 	def test_overall_draw_false
 		sample_game =  RockPaperScissorsGame.new
-		@player1 = "Beth"
-		@player2 = "Hal"
+		@player1 = sample_game.set_p1_name("Beth")
+		@player2 = sample_game.set_p2_name("Hal")
 		score = {@player1 => 2, @player2 => 3}
 
 		assert_equal(false, sample_game.overall_draw?(score))

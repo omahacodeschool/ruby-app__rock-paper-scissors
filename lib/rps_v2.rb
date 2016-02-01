@@ -102,13 +102,6 @@ class RockPaperScissorsGame
 	end
 
 
-	# def get_number_of_games
-	# 	return gets.chomp.to_i
-	# end
-
-
-
-
 	#Check to see if it's an overall draw
 	#
 	#score - The Hash that's storing the @player's name and number of rounds won
@@ -117,9 +110,9 @@ class RockPaperScissorsGame
 	#
 	#Returns true or false
 	def overall_draw?(score)
-		puts "\n-------------------------------------------------------"
-		puts "Player 1 score is " + "#{score[@player1]}" 
-		puts "Player 2 score is " + "#{score[@player2]}" 
+		# puts "\n-------------------------------------------------------"
+		# puts "Player 1 score is " + "#{score[@player1]}" 
+		# puts "Player 2 score is " + "#{score[@player2]}" 
 		score[@player1] == score[@player2]
 	end
 
@@ -145,21 +138,32 @@ class RockPaperScissorsGame
 		end
 	end
 
-
+	#set player one's name
+	#
+	#str - is the String that is input
 	def set_p1_name(str)
-		@player1 = str
+		return @player1 = str
 	end
 
+	#set player two's name
+	#
+	#str - is the String that is input
 	def set_p2_name(str)
-		@player2 = str
+		return @player2 = str
 	end
 
+	#set player one's weapon
+	#
+	#str - is the String that is input
 	def set_p1_weapon(str)
-		@p1 = str
+		return @p1 = str
 	end
 
+	#set player two's weapon
+	#
+	#str - is the String that is input
 	def set_p2_weapon(str)
-		@p2 = str
+		return @p2 = str
 	end
 
 end

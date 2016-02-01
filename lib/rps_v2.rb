@@ -103,6 +103,13 @@ class RockPaperScissorsGame
 	end
 
 
+	# def get_number_of_games
+	# 	return gets.chomp.to_i
+	# end
+
+
+
+
 	#Check to see if it's an overall draw
 	#
 	#score - The Hash that's storing the @player's name and number of rounds won

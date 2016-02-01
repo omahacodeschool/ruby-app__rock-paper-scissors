@@ -6,7 +6,7 @@
 #
 #Returns true or false
 def if_player_1_wins?
-	($p1 == "scissors" && $p2 == "paper") || ($p1 == "rock" && $p2 == "scissors") || ($p1 == "paper" && $p2 == "rock")
+	($p1 == "scissors" && $p2 == "paper") || ($p1 == "rock" && $p2 == "scissors") || ($p1 == "paper" && $p2 == "rock") || ($p1 == "rock" && $p2 == "lizard") || ($p1 == "spock" && $p2 == "scissors") || ($p1 == "scissors" && $p2 == "lizard") || ($p1 == "spock" && $p2 == "rock") || ($p1 == "lizard" && $p2 == "paper") || ($p1 == "paper" && $p2 == "spock")|| ($p1 == "lizard" && $p2 == "spock") 
 end
 
 #Check to see if it's a draw
@@ -35,7 +35,7 @@ end
 def get_player_input
 	puts "\n-------------------------------------------------------"
 	input = gets.chomp.downcase
-		while input != "rock" && input != "paper" && input != "scissors"
+		while input != "rock" && input != "paper" && input != "scissors" && input != "spock" && input != "lizard"
 			puts "Please try typing that again."
 			input = gets.chomp.downcase
 		end
@@ -85,14 +85,14 @@ def game_on
 	score = {$player1 => 0, $player2 => 0}
 
 	while round_number < number_of_games #score.values.max < 3
-		puts "#{$player1}" +", please type rock, paper, or scissors"
+		puts "#{$player1}" +", please type rock, paper, scissors, lizard, spock."
 		$p1 = get_player_input
 
 		if computer_game == "yes"
-			$p2 = %w[rock paper scissors].sample
+			$p2 = %w[rock paper scissors lizard spock].sample
 
 		else
-			puts "#{$player2}" +", please type rock, paper, or scissors"
+			puts "#{$player2}" +", please type rock, paper, scissors, lizard, spock."
 			$p2 = get_player_input
 
 		end

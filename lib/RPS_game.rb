@@ -59,28 +59,12 @@ def battle(weapon1, weapon2)
      return @player1.get_tie_confirmation
   end
   
-  if weapon1 == "rock" && weapon2 == "paper"
-    return player2_wins()
+  if ( weapon1 == "rock" && weapon2 == "paper" ) || ( weapon1 == "scissors" && weapon2 == "rock" ) || ( weapon1 == "paper" && weapon2 == "scissors" )
+    return player2_wins() 
   end
 
-  if weapon1 == "rock" && weapon2 =="scissors"
+  if ( weapon1 == "scissors" && weapon2 == "paper" ) || ( weapon1 == "rock" && weapon2 == "scissors" ) || ( weapon1 == "paper" && weapon2 == "rock" )
      return player1_wins()
-  end
-
-  if weapon1 == "scissors" && weapon2 == "paper"
-     return player1_wins()
-  end
-
-  if weapon1 == "scissors" && weapon2 == "rock"
-     return player2_wins()
-  end
-
-  if weapon1 == "paper" && weapon2 == "rock"
-     return player1_wins()
-  end
-
-  if weapon1 == "paper" && weapon2 == "scissors"
-     return player2_wins()
   end
 
 end

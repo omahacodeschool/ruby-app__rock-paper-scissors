@@ -29,7 +29,8 @@ class RockPaperScissorsGame
 
 		score = {@player1 => 0, @player2 => 0}
 
-
+		set_win_hash
+		
 		while round_number < number_of_games
 			puts "#{@player1}" +", please type rock, paper, scissors, lizard, spock."
 			set_p1_weapon(get_player_input)
@@ -142,7 +143,6 @@ class RockPaperScissorsGame
 
 	def set_win_hash
 		@win_hash = {"paper" => ["scissors", "lizard"], "scissors" => ["rock", "spock"], "rock" => ["paper", "spock"], "lizard" => ["rock", "scissors"], "spock" => ["paper", "lizard"]}
-
 	end
 
 	def set_p1_name(str)

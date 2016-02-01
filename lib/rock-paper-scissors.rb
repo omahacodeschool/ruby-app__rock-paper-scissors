@@ -1,66 +1,80 @@
-def rock_paper_scissors
+def get_player_1_weapon
+  puts "Player 1, unleash your weapon:"
+  return gets.chomp
 end
 
-def rps_set
+def get_player_2_weapon
+  puts "Player 2, unleash your weapon:"
+  return gets.chomp
 end
 
-
-def rps_game
-
-player1_wins = 0
-player2_wins = 0
-
-  while player1_wins < 3 && player2_wins < 3 do
-
-    puts "Player 1, unleash your weapon!"
-    player1_weapon = gets.chomp
-    puts "Player 2, unleash your weapon!"
-    player2_weapon = gets.chomp
-
-    if player1_weapon == player2_weapon
-      puts "#{player2_weapon} equals #{player2_weapon}."
-      puts "It's a draw!"
-    elsif player1_weapon == "rock" && player2_weapon == "scissors"
-      player1_wins += 1
-      puts "Rock smashes Scissors."
-      puts "Player 1 wins!"
-    elsif player1_weapon == "rock" && player2_weapon == "paper"
-      player2_wins += 1
-      puts "Paper covers Rock."
-      puts "Player 2 wins!"
-    elsif player1_weapon == "paper" && player2_weapon == "rock"
-      player1_wins += 1
-      puts "Paper covers Rock."
-      puts "Player 1 wins!"
-    elsif player1_weapon == "paper" && player2_weapon == "scissors"
-      player2_wins += 1
-      puts "Scissors cut Paper."
-      puts "Player 2 wins!"
-    elsif player1_weapon == "scissors" && player2_weapon == "paper"
-      player1_wins += 1
-      puts "Scissors cut Paper."
-      puts "Player 1 wins!"
-    elsif player1_weapon == "scissors" && player2_weapon == "rock"
-      player2_wins += 1
-      puts "Rock smashes Scissors."
-      puts "Player 2 wins!"
-    end
-
-    puts "-------"
-    puts "Player 1: #{player1_wins}"
-    puts "Player 2: #{player2_wins}"
-    puts "Play again."
-    puts "-------"
-
+def game_winner(weapon_p1, weapon_p2)
+  if weapon_p1 == "rock" && weapon_p2 == "scissors"
+    return 1
+  elsif weapon_p1 == "paper" && weapon_p2 == "rock"
+    return 1
+  elsif weapon_p1 == "scissors" && weapon_p2 == "paper"
+    return 1
+  elsif weapon_p2 == "rock" && weapon_p1 == "scissors"
+    return 2
+  elsif weapon_p2 == "paper" && weapon_p1 == "rock"
+    return 2
+  elsif weapon_p2 == "scissors" && weapon_p2 == "paper"
+    return 2
+  else
+    return nil
   end
+end  
 
-  if player1_wins > player2_wins
-    puts "Player 1 wins the set #{player1_wins} to #{player2_wins}"
-  elsif player2_wins > player1_wins
-    puts "Player 2 wins the set #{player2_wins} to #{player1_wins}"
+# def draw(weapon_p1,weapon_p2)
+#   if weapon_p1 == weapon_p2
+#     return draw
+# end
+
+# def rock_vs_scissors(weapon_p1,weapon_p2)
+#   if weapon_p1 == "rock" && weapon_p2 == "scissors"
+#     return rock_smashes_scissors
+#   elsif weapon_p2 == "rock" && weapon_p1 == "scissors"
+#     return rock_smashes_scissors
+#   else
+#     return nil
+#   end
+# end
+
+# def paper_vs_rock(weapon_p1,weapon_p2)
+#   if weapon_p1 == "paper" && weapon_p2 == "rock"
+#     return paper_covers_rock
+#   elsif weapon_p2 == "paper" && weapon_p1 == "rock"
+#     return paper_covers_rock
+#   else
+#     return nil
+#   end
+# end
+#
+# def scissors_vs_paper(weapon_p1,weapon_p2)
+#   if weapon_p1 == "scissors" && weapon_p2 == "paper"
+#     return scissors_cut_paper
+#   elsif weapon_p2 =="scissors" && weapon_p1 == "paper"
+#     return scissors_cut_paper
+#   else
+#     return nil
+#   end
+# end
+
+def display_game_result(winner)
+  if winner == 1
+    puts "Player 1 wins!"
+  elsif winner == 2
+    puts "Player 2 wins!"
+  else
+    puts "It's a draw!"
   end
-    
-
 end
+      
 
-rps_game
+p1_weapon = get_player_1_weapon
+p2_weapon = get_player_2_weapon
+game_result = game_winner(p1_weapon, p2_weapon)
+display_game_result(game_result)
+
+

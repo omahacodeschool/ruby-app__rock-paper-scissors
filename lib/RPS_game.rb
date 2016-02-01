@@ -137,5 +137,3 @@ def run_game()
   puts run_game_loop
   puts determine_set_winner(@player1.get_games_won(), @player2.get_games_won())
 end
-
-run_game()

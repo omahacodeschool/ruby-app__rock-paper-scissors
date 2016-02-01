@@ -28,7 +28,7 @@ class Main_rps
   end
 
   def set_games_won()
-    @score_count = @score_count.set_games_won
+    @score_count.set_games_won
   end
 
   # DOES: 
@@ -41,7 +41,7 @@ class Main_rps
   end
 
   def set_games_tied()
-    @weapon = @score_count.set_games_tied
+    @score_count.set_games_tied
   end
 
   # DOES: 

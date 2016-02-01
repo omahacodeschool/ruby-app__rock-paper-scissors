@@ -39,7 +39,7 @@ end
 # Returns 2 Strings
 def player2_wins()
   @player2.set_games_won
-  return @player2.get_victory_confirmation + " " + @player1.get_loss_confirmation]
+  return @player2.get_victory_confirmation + " " + @player1.get_loss_confirmation
   
 end
 
@@ -55,8 +55,8 @@ end
 def battle(weapon1, weapon2)
 
   if weapon1 == weapon2
-     puts @player1.get_tie_confirmation
      @player1.set_games_tied()
+     puts @player1.get_tie_confirmation
   end
   
   if weapon1 == "rock" && weapon2 == "paper"

@@ -29,6 +29,11 @@ class Weapon
 
   end
 
+  # DOES: 
+  #
+  # @weapon
+  #
+  # Returns String
   def get_weapon()
     return @weapon
   end

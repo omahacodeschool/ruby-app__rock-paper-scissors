@@ -18,22 +18,37 @@ class Main_rps
      
   end
 
+  # DOES: 
+  #
+  # @player_name
+  #
+  # Returns String
   def get_name()
     return @player_name
   end
 
   def set_games_won()
-    @score_count.set_games_won
+    @score_count = @score_count.set_games_won
   end
 
+  # DOES: 
+  #
+  # @score_count.get_games_won
+  #
+  # Returns Integer
   def get_games_won()
     return @score_count.get_games_won
   end
 
   def set_games_tied()
-     @score_count.set_games_tied
+    @weapon = @score_count.set_games_tied
   end
 
+  # DOES: 
+  #
+  # @score_count.get_games_tied
+  #
+  # Returns Method
   def get_games_tied()
     return @score_count.get_games_tied
   end
@@ -42,19 +57,34 @@ class Main_rps
     @weapon.set_weapon()
   end
 
+  # DOES: 
+  #
+  # @weapon.get_weapon()
+  #
+  # Returns Method
   def get_weapon()
     return @weapon.get_weapon()
   end
 
+  # DOES: 
+  #
+  # Returns String
   def get_victory_confirmation()
     return "#{get_name} wins with #{get_weapon}!"
   end
 
+  # DOES: 
+  #
+  # Returns String
   def get_loss_confirmation()
     return "#{get_name} loses with #{get_weapon}!"
   end
 
+  # DOES: 
+  #
+  # Returns String
   def get_tie_confirmation()
     return "Both players tie with #{get_weapon}!"
   end
+  
 end

@@ -7,7 +7,7 @@ class RockPaperScissorsTest < Minitest::Test
 		sample_game =  RockPaperScissorsGame.new
 		sample_game.set_p1_weapon("rock")
 		sample_game.set_p2_weapon("scissors")
-
+		win_hash = {"paper" => ["scissors", "lizard"], "scissors" => ["rock", "spock"], "rock" => ["paper", "spock"], "lizard" => ["rock", "scissors"], "spock" => ["paper", "lizard"]}
 	  	assert_equal(@player1, sample_game.find_winner)
 	end
 

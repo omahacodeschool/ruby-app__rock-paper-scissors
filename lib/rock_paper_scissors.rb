@@ -1,62 +1,90 @@
 require 'pry'
 
-
+def number_needed_to_win_set
 puts "How many games do you want in your set?"
-number_of_games = gets.chomp.to_i
+return gets.chomp.to_i/2
+end
 
+def meet_player_1
 puts "Player 1, please enter your name:"
   player_1_name = gets.chomp
   puts "Hello, #{player_1_name}!"
+  return player_1_name
+end
 
-  puts "Player 2, please enter your name:"
+def meet_player_2
+puts "Player 2, please enter your name:"
   player_2_name = gets.chomp
   puts "Hello, #{player_2_name}!"
+  return player_2_name
+end
+
+def get_player_1_weapon
+  puts "Player 1, enter your move:"
+  return gets.chomp.downcase
+  end
+
+def get_player_2_weapon
+  puts "Player 2, enter your move:"
+  return gets.chomp.downcase
+  end
+
+def check_for_winner(player_1_weapon, player_2_weapon)
+
+
+end
+
+
+win_number = number_needed_to_win_set
+player_1_name = meet_player_1
+player_2_name = meet_player_2
+
 
 player_1_score = 0
 player_2_score = 0
 set_number = 0
-win_number = (number_of_games/2)
+
 
 until player_1_score > win_number || player_2_score > win_number
 
   set_number += 1
 
 
-  puts "Okay, it's set number: #{set_number}. Player 1, enter your move:"
-  player_1_move = gets.chomp.downcase
-  puts "Player 2, enter your move:"
-  player_2_move = gets.chomp.downcase
+  puts "Okay, it's set number: #{set_number}."
   
-  if player_1_move == player_2_move
+  p1_weapon = get_player_1_weapon
+  p2_weapon = get_player_2_weapon
+  
+  if p1_weapon == p2_weapon
       puts "That's a draw!"
     end
 
-  if player_1_move == 'paper'
-    if player_2_move == 'rock'
+  if p1_weapon == 'paper'
+    if p2_weapon == 'rock'
       puts "#{player_1_name}, you win set number: #{set_number}!"
       player_1_score += 1
     end
-    if player_2_move == 'scissors'
+    if p2_weapon == 'scissors'
       puts "#{player_2_name}, you win set number: #{set_number}!"
       player_2_score += 1
     end
 
-  elsif player_1_move == 'scissors'
-    if player_2_move == 'rock'
+  elsif p1_weapon == 'scissors'
+    if p2_weapon == 'rock'
       puts "#{player_2_name}, you win set number: #{set_number}!"
       player_2_score += 1
     end
-    if player_2_move == 'paper'
+    if p2_weapon == 'paper'
       puts "#{player_1_name}, you win set number: #{set_number}!"
       player_1_score +=1
     end
 
-  elsif player_1_move == 'rock'
-    if player_2_move == 'paper'
+  elsif p1_weapon == 'rock'
+    if p2_weapon == 'paper'
       puts "#{player_2_name}, you win set number: #{set_number}!"
       player_2_score += 1
     end
-    if player_1_move == 'scissors'
+    if p1_weapon == 'scissors'
       puts "#{player_1_name} you win set number: #{set_number}!"
       player_1_score +=1
     end

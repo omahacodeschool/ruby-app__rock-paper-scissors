@@ -5,8 +5,6 @@ class RockPaperScissorsGame
 	#This method runs the game
 	def game_on
 		
-		@win_hash = {"paper" => ["scissors", "lizard"], "scissors" => ["rock", "spock"], "rock" => ["paper", "spock"], "lizard" => ["rock", "scissors"], "spock" => ["paper", "lizard"]}
-
 		puts "If you would like to play against the computer, please type 'yes'."
 		computer_game = gets.chomp.downcase
 
@@ -139,6 +137,12 @@ class RockPaperScissorsGame
 		else
 			return nil
 		end
+	end
+
+
+	def set_win_hash
+		@win_hash = {"paper" => ["scissors", "lizard"], "scissors" => ["rock", "spock"], "rock" => ["paper", "spock"], "lizard" => ["rock", "scissors"], "spock" => ["paper", "lizard"]}
+
 	end
 
 	def set_p1_name(str)

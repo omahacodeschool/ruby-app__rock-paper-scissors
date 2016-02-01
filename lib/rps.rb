@@ -1,36 +1,37 @@
-#Check if the following conditions are met to see if player one wins
+
+#Check if the following conditions are met to see if $player one wins
 #
-# p1 - The String that is player one's input
-# p2 - The String that is player two's input
+# $p1 - The String that is $player one's input
+# $p2 - The String that is $player two's input
 #
 #Returns true or false
-def if_player_1_wins?(p1, p2)
-	(p1 == "scissors" && p2 == "paper") || (p1 == "rock" && p2 == "scissors") || (p1 == "paper" && p2 == "rock")
+def if_player_1_wins?
+	($p1 == "scissors" && $p2 == "paper") || ($p1 == "rock" && $p2 == "scissors") || ($p1 == "paper" && $p2 == "rock")
 end
 
 #Check to see if it's a draw
 #
-# p1 - The String that is player one's input
-# p2 - The String that is player two's input
+# $p1 - The String that is $player one's input
+# $p2 - The String that is $player two's input
 #
 #Returns true or false
-def draw?(p1, p2)
-	p1 == p2
+def draw?
+	$p1 == $p2
 end
 
-#Get a player's name
+#Get a $player's name
 #
 #
-#Returns a player's name
+#Returns a $player's name
 def get_player_name
 	puts "\n-------------------------------------------------------"
 	return gets.chomp.capitalize
 end
 
-#Get a player's name
+#Get a $player's name
 #
 #
-#Returns a player's name
+#Returns a $player's name
 def get_player_input
 	puts "\n-------------------------------------------------------"
 	input = gets.chomp.downcase
@@ -43,14 +44,18 @@ end
 
 #Check to see if it's an overall draw
 #
-#score - The Hash that's storing the player's name and number of rounds won
-# p1 - The String that is player one's input
-# p2 - The String that is player two's input
+#score - The Hash that's storing the $player's name and number of rounds won
+# $player1 - The string that is player one's name
+# $player2 - The string that is player two's name
 #
 #Returns true or false
-def overall_draw?(score, player1, player2)
-	score["#{player1}"] == score["#{player2}"]
+def overall_draw?(score)
+	puts "\n-------------------------------------------------------"
+	puts "Player 1 score is " + "#{score[$player1]}" 
+	puts "Player 2 score is " + "#{score[$player2]}" 
+	score[$player1] == score[$player2]
 end
+
 
 
 def game_on
@@ -59,16 +64,16 @@ def game_on
 	computer_game = gets.chomp.downcase
 
 	puts "Player one, please type your name."
-	player1 = get_player_name
+	$player1 = get_player_name
 
 	if computer_game == "yes" 
 
-		player2 = "Hal"
+		$player2 = "Hal"
 
 	else
 	
 		puts "Player two, please type your name."
-		player2 = get_player_name
+		$player2 = get_player_name
 
 	end
 
@@ -77,45 +82,47 @@ def game_on
 
 	round_number = 0
 
-	score = {"#{player1}" => 0, "#{player2}" => 0}
+	score = {$player1 => 0, $player2 => 0}
 
 	while round_number < number_of_games #score.values.max < 3
-		puts "#{player1}" +", please type rock, paper, or scissors"
-		p1 = get_player_input
+		puts "#{$player1}" +", please type rock, paper, or scissors"
+		$p1 = get_player_input
 
 		if computer_game == "yes"
-			p2 = %w[rock paper scissors].sample
+			$p2 = %w[rock paper scissors].sample
 
 		else
-			puts "#{player2}" +", please type rock, paper, or scissors"
-			p2 = get_player_input
+			puts "#{$player2}" +", please type rock, paper, or scissors"
+			$p2 = get_player_input
 
 		end
 
-		puts "#{player1}" + " chose " + "#{p1}" + ". " + "#{player2}" + " chose " + "#{p2}" + "."
+		puts "#{$player1}" + " chose " + "#{$p1}" + ". " + "#{$player2}" + " chose " + "#{$p2}" + "."
 
-		if draw?(p1, p2)
+		if draw?
 	 	 	puts "It's a draw!"
 
-		elsif if_player_1_wins?(p1, p2)
-			score["#{player1}"] += 1
-		 	puts "#{player1.capitalize}" + " wins this round."
+		elsif if_player_1_wins?
+			score[$player1] += 1
+		 	puts "#{$player1.capitalize}" + " wins this round."
 
-		elsif !if_player_1_wins?(p1, p2)
-			score["#{player2}"] += 1
-		  	puts "#{player2.capitalize}" + " wins this round."
+		elsif !if_player_1_wins?
+			score[$player2] += 1
+		  	puts "#{$player2.capitalize}" + " wins this round."
 
 		end
 		puts score
 		round_number += 1
 	end
-	if overall_draw?(score, player1, player2)
+	if overall_draw?(score)
 		puts "No one wins overall game."
 
-	else !overall_draw?(score, player1, player2)
+	else !overall_draw?(score)
 		puts "#{score.max_by{|k,v| v}[0].upcase}" + " WINS OVERALL!!!"
 	end
 end
 
 
 game_on
+
+

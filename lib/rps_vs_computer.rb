@@ -1,7 +1,7 @@
+#WIP
 #vs computer version
 =begin
   
-rescue Exception => e
   
 end
 

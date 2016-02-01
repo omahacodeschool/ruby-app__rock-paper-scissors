@@ -29,8 +29,6 @@ class RockPaperScissorsGame
 
 		score = {@player1 => 0, @player2 => 0}
 
-		set_win_hash
-
 		while round_number < number_of_games
 			puts "#{@player1}" +", please type rock, paper, scissors, lizard, spock."
 			set_p1_weapon(get_player_input)
@@ -69,9 +67,11 @@ class RockPaperScissorsGame
 
 
 		if overall_draw?(score)
+			puts "Player 1 score is " + "#{score[@player1]}" 
+			puts "Player 2 score is " + "#{score[@player2]}" 
 			puts "No one wins overall game."
 
-		else !overall_draw?(score)
+		else 
 			puts "#{score.max_by{|k,v| v}[0].upcase}" + " WINS OVERALL!!!"
 		end
 
@@ -117,9 +117,9 @@ class RockPaperScissorsGame
 	#
 	#Returns true or false
 	def overall_draw?(score)
-		# puts "\n-------------------------------------------------------"
-		# puts "Player 1 score is " + "#{score[@player1]}" 
-		# puts "Player 2 score is " + "#{score[@player2]}" 
+		puts "\n-------------------------------------------------------"
+		puts "Player 1 score is " + "#{score[@player1]}" 
+		puts "Player 2 score is " + "#{score[@player2]}" 
 		score[@player1] == score[@player2]
 	end
 
@@ -127,13 +127,14 @@ class RockPaperScissorsGame
 		@win_hash = {"paper" => ["scissors", "lizard"], "scissors" => ["rock", "spock"], "rock" => ["paper", "spock"], "lizard" => ["rock", "scissors"], "spock" => ["paper", "lizard"]}
 	end
 
-	
+
 	#check to see who wins
 	#
 	#win_hash - Hash that contains winning combos
 	#
 	#returns player or nil
 	def find_winner
+		set_win_hash
 		#player with the value that corresponds with the key wins
 		if @win_hash[@p1].include?(@p2)
 			return @player2

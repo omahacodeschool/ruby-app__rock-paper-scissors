@@ -7,40 +7,44 @@ class RockPaperScissorsTest < Minitest::Test
 		sample_game =  RockPaperScissorsGame.new
 		sample_game.set_p1_weapon("rock")
 		sample_game.set_p2_weapon("scissors")
-		win_hash = {"paper" => ["scissors", "lizard"], "scissors" => ["rock", "spock"], "rock" => ["paper", "spock"], "lizard" => ["rock", "scissors"], "spock" => ["paper", "lizard"]}
+		@win_hash = {"paper" => ["scissors", "lizard"], "scissors" => ["rock", "spock"], "rock" => ["paper", "spock"], "lizard" => ["rock", "scissors"], "spock" => ["paper", "lizard"]}
 	  	assert_equal(@player1, sample_game.find_winner)
 	end
 
-	# def test_player_two_win
-	# 	$p1 = "rock"
-	# 	$p2 = "paper"
-	# 	win_hash = {"paper" => ["scissors", "lizard"], "scissors" => ["rock", "spock"], "rock" => ["paper", "spock"], "lizard" => ["rock", "scissors"], "spock" => ["paper", "lizard"]}
+	def test_player_two_win
+		sample_game =  RockPaperScissorsGame.new
+		sample_game.set_p1_weapon("scissors")
+		sample_game.set_p2_weapon("rock")
+		@win_hash = {"paper" => ["scissors", "lizard"], "scissors" => ["rock", "spock"], "rock" => ["paper", "spock"], "lizard" => ["rock", "scissors"], "spock" => ["paper", "lizard"]}
+	  	assert_equal(@player2, sample_game.find_winner)
+	end
 
-	#   	assert_equal($player1, find_winner(win_hash))
-	# end
 
-	# def test_game_draw
-	# 	$p1 = "rock"
-	# 	$p2 = "rock"
-	# 	win_hash = {"paper" => ["scissors", "lizard"], "scissors" => ["rock", "spock"], "rock" => ["paper", "spock"], "lizard" => ["rock", "scissors"], "spock" => ["paper", "lizard"]}
+	def test_game_draw
+		sample_game =  RockPaperScissorsGame.new
+		sample_game.set_p1_weapon("rock")
+		sample_game.set_p2_weapon("rock")
+		@win_hash = {"paper" => ["scissors", "lizard"], "scissors" => ["rock", "spock"], "rock" => ["paper", "spock"], "lizard" => ["rock", "scissors"], "spock" => ["paper", "lizard"]}
+	  	assert_equal(nil, sample_game.find_winner)
+	end
 
-	# 	assert_equal(nil, find_winner(win_hash))
-	# end
+	def test_overall_draw_true
+		sample_game =  RockPaperScissorsGame.new
+		@player1 = "Beth"
+		@player2 = "Hal"
+		score = {@player1 => 3, @player2 => 3}
 
-	# def test_overall_draw_true
-	# 	$player1 = "Beth"
-	# 	$player2 = "Hal"
-	# 	score = {$player1 => 3, $player2 => 3}
+		assert_equal(true, sample_game.overall_draw?(score))
+	end
 
-	# 	assert_equal(true, overall_draw?(score))
-	# end
+	def test_overall_draw_false
+		sample_game =  RockPaperScissorsGame.new
+		@player1 = "Beth"
+		@player2 = "Hal"
+		score = {@player1 => 2, @player2 => 3}
 
-	# def test_overall_draw_false
-	# 	$player1 = "Beth"
-	# 	$player2 = "Hal"
-	# 	score = {$player1 => 1, $player2 => 2}
+		assert_equal(false, sample_game.overall_draw?(score))
+	end
 
-	# 	assert_equal(false, overall_draw?(score))
-	# end
 
 end

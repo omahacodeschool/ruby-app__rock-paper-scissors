@@ -28,10 +28,10 @@ def get_player_name
 	return gets.chomp.capitalize
 end
 
-#Get a $player's name
+#Get a $player's input
 #
 #
-#Returns a $player's name
+#Returns a $player's input
 def get_player_input
 	puts "\n-------------------------------------------------------"
 	input = gets.chomp.downcase

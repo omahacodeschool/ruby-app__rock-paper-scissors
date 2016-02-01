@@ -28,7 +28,7 @@ class RockPaperScissorsTest < Minitest::Test
 	  	assert_equal(nil, sample_game.find_winner)
 	end
 
-	def test_overall_draw_false
+	def test_overall_draw_true
 		sample_game =  RockPaperScissorsGame.new
 		@player1 = sample_game.set_p1_name("Beth")
 		@player2 = sample_game.set_p2_name("Hal")

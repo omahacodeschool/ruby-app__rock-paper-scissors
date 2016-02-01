@@ -1,100 +1,100 @@
-#Establishes 'i' for the sake of iteration in 'while' loop
+
+
+def want_to_play?
+  puts "Hello! Would you like to play a few games of Rock, Paper, Scissors? (type 'Y' or 'N')"
+  gets.chomp.upcase
+end
+
+
+#Asks how many rounds are to be played.  
+def how_many_rounds_message
+    puts "Excellent! So how many rounds would you like to play?"
+    gets.chomp
+end
+
+#message to start game
+def start_game_message(rounds)
+  puts "Alright. We're going to play #{rounds} rounds. Let the battle begin."
+end
+
+
+def player1_choose?
+    puts "Player 1, it's your turn."
+    puts "\n ROCK, PAPER, or SCISSORS? Choose wisely!"
+    gets.chomp
+end
+
+def player2_choose?
+    puts "Player 2, it's your turn."
+    puts "\n ROCK, PAPER, or SCISSORS? Choose wisely!"
+    gets.chomp
+end
+
+
+def winning_weapon(p1_weapon, p2_weapon)
+  if (p1_weapon == "ROCK" && p2_weapon == "SCISSORS") || (p1_weapon == "SCISSORS" && p2_weapon == "PAPER")|| (p1_weapon == "PAPER" && p1_weaopn == "ROCK")
+    return 1
+
+  elsif (p2_weapon == "SCISSORS" && p1_weapon == "PAPER") || (p2_weapon == "ROCK" && p1_weapon == "SCISSORS") || (p2_weapon == "PAPER" && p1_weapon == "ROCK")
+
+    return 2
+
+  else
+    return nil
+  end
+end
+
+def display_game_result(winner)
+  if winner == 1
+    puts "Player 1, you win."
+  elsif winner == 2
+    puts "Player 2, you win."
+  else
+    puts "It's a tie."
+  end
+end
+
+
+def who_won_message?(player1_score, player2_score)
+  if player1_score > player2_score
+    puts "\n _____________________________________________________________"
+    puts "Player 1 won #{player1_score} rounds and is the winner!"
+
+  elsif player2_score > player1_score
+    puts "\n _____________________________________________________________"
+    puts "Player 2 won #{player2_score} rounds and is the winner!"
+
+  else
+    puts "It's a tie!"
+  end
+end
+
+
 i = 0
 player1_score = 0
 player2_score = 0
 
-puts "Hello! Would you like to play a few games of Rock Paper Scissors? (type Y or N)"
-Yes_or_No = gets.chomp
+yes_or_no = want_to_play?
+rounds = how_many_rounds_message
+start_game_message(rounds)
 
-if Yes_or_No.upcase == "Y"
-  
-    puts "Excellent! So how many rounds would you like to play?"
-
-    rounds = gets.chomp
-
-    puts "Alright. We're gonna play #{rounds} rounds. Let the battle begin!"
-
-    puts "\n----------------------------------------------------------------------------"
-
-    while i < rounds.to_i do
-
-        
-        puts "\n <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>"
-
-        puts "Player 1, your turn."
-        puts "\n ROCK, PAPER, or SCISSORS? Choose wisely!"
-        p1_choice = gets.chomp
-        puts "\n _____________________________________________________________"
-        puts "Player 2, your turn!"
-        puts "\n ROCK, PAPER, or SCISSORS? Choose wisely!"
-        p2_choice = gets.chomp
-
-        
-        def winning_weapon(p1_choice, p2_choice)
+while i < rounds.to_i do
     
-            if 
-                (p1_choice.upcase == "ROCK" && p2_choice.upcase == "SCISSORS") || (p1_choice.upcase == "SCISSORS" && p2_choice.upcase == "PAPER")|| (p1_choice.upcase == "PAPER" && p2_choice.upcase == "ROCK")
-        
-                winning_weapon = p1_choice
+  p1_weapon = player1_choose?.upcase
+  p2_weapon = player2_choose?.upcase
+  winner_of_game = winning_weapon(p1_weapon, p2_weapon)
+  display_game_result(winner_of_game)
+  i += 1
 
-            elsif
-                (p2_choice.upcase == "SCISSORS" && p1_choice.upcase == "PAPER") || (p2_choice.upcase == "ROCK" && p1_choice.upcase == "SCISSORS") || (p2_choice.upcase == "PAPER" &&p1_choice.upcase == "ROCK")
-        
-                winning_weapon = p2_choice
-
-
-            else 
-                p1_choice.upcase == p2_choice.upcase
-                puts "\n _____________________________________________________________"
-                puts "You chose the same weapon. It's a tie!"
-
-            
-            end
-        end
-    
-        if 
-            winning_weapon(p1_choice, p2_choice) == p1_choice
-            puts "Player 1 chose #{p1_choice} and Player 2 chose #{p2_choice}"
-            puts "\n Player 1 wins this round"
-            player1_score += 1
-            i += 1
-            
-        elsif
-            winning_weapon(p1_choice, p2_choice) == p2_choice
-            puts "Player 1 chose #{p1_choice} and Player 2 chose #{p2_choice}"
-            puts "\n Player 2 wins this round"
-            player2_score += 1
-            i += 1
-            
-        else
-            puts "Player 1 and Player 2 chose the same weapon. It's a tie!"
-            player1_score += 1
-            player2_score += 1
-            i += 1
-        end
-    end
-
-        if
-            player1_score > player2_score
-            puts "\n _____________________________________________________________"
-            puts "Player 1 won #{player1_score} rounds and is the winner!"
-
-        elsif 
-            player1_score == player2_score
-            puts "\n _____________________________________________________________"        
-            puts "It's a tie!!!"
-
-        else
-            puts "\n _____________________________________________________________"
-            puts "Player 2 won #{player2_score} rounds and is the winner!"
-        end
-    end
-    
-
-if
-    
-    Yes_or_No.upcase == "N"
-    puts "Sorry to hear that. Maybe we can play later... when you're in a better mood!"
+  if winner_of_game == 1
+    player1_score += 1
+  elsif winner_of_game == 2
+    player2_score += 1
+  else
+    player1_score += 1
+    player2_score += 1
+  end
     
 end
 
+who_won_message?(player1_score, player2_score)

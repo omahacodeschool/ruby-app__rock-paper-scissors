@@ -11,7 +11,7 @@ class RockPaperScissorsGame
 		computer_game = gets.chomp.downcase
 
 		puts "Player one, please type your name."
-		@player1 = get_player_name
+		set_p1_name(get_player_name)
 
 
 
@@ -20,7 +20,7 @@ class RockPaperScissorsGame
 
 		else
 			puts "Player two, please type your name."
-			@player2 = get_player_name
+			set_p2_name(get_player_name)
 		end
 
 
@@ -34,14 +34,14 @@ class RockPaperScissorsGame
 
 		while round_number < number_of_games
 			puts "#{@player1}" +", please type rock, paper, scissors, lizard, spock."
-			@p1 = get_player_input
+			set_p1_weapon(get_player_input)
 
 			if computer_game == "yes"
 				@p2 = %w[rock paper scissors lizard spock].sample
 
 			else
 				puts "#{@player2}" +", please type rock, paper, scissors, lizard, spock."
-				@p2 = get_player_input
+				set_p2_weapon(get_player_input)
 
 			end
 
@@ -132,6 +132,22 @@ class RockPaperScissorsGame
 		else
 			return nil
 		end
+	end
+
+	def set_p1_name(str)
+		@player1 = str
+	end
+
+	def set_p2_name(str)
+		@player2 = str
+	end
+
+	def set_p1_weapon(str)
+		@p1 = str
+	end
+
+	def set_p2_weapon(str)
+		@p2 = str
 	end
 
 end

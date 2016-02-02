@@ -91,39 +91,64 @@ end
 
 ############### ACTUAL PROGRAM STARTS BELOW ################################
 
-
+# Ask how many games the players want to play
 win_number = number_needed_to_win_set
+
+# Meet the players and store their names
 @player_1_name = meet_player_1
 @player_2_name = meet_player_2
 
-
+# Set scoreboard and set count to 0
 @player_1_score = 0
 @player_2_score = 0
 @set_number = 0
 
+# Begin playing games until one player gets enough wins to win set
 
 until @player_1_score > win_number || @player_2_score > win_number
+
+# I could probably keep refactoring and make the 
+# set_number count and set_number display a method if I wanted.
+
+# Am just now realizing that set number probably doesn't need to be an
+# instance variable. I could just pass it in as an argument to the alert_winner
+# method. I have a feeling that is a better idea...
 
   @set_number += 1
 
 
   puts "Okay, it's set number: #{@set_number}."
+
+  # Get weapon choice from player 1 and player 2
   
   p1_weapon = get_player_1_weapon
   p2_weapon = get_player_2_weapon
 
+  # Determine who is the winner of a set, or if it's a tie
+
   set_winner = set_winner(p1_weapon, p2_weapon)
+
+  # Add the score to the scoreboard
 
   add_win_to_score(set_winner)
 
+  # Tell the players who won that set
+
   alert_winner(set_winner)
+
+  # Show the scoreboard and set number before the next game in set begins
  
   puts "\nEnd of set number #{@set_number}.\nThe current score is:\nPlayer 1: #{@player_1_score}\nPlayer 2: #{@player_2_score}\n\n\n"
 end
 
 ################# LOOP END ############################
 
+# Determine the game winner and store his/her name 
+# Should winner be an instance variable???
+
 winner = game_winner
+
+# Tell the players who won
 
 puts "And the winner is.....#{winner}! Congratulations, #{winner}!"
 

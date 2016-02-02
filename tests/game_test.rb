@@ -33,5 +33,12 @@ class GameTest < Minitest::Test
 
     assert_equal(true, sample_game.game_time?)
   end
-  
+
+  def test_not_a_draw?
+    sample_game = Game.new
+    sample_game.set_player_1("scissors")
+    sample_game.set_player_2("rock")
+
+    assert_equal(true, sample_game.not_a_draw?)
+  end
 end

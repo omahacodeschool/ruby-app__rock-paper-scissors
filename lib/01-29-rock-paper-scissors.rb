@@ -1,7 +1,7 @@
 class Game
   # finds player that won the set
   #
-  # player_1_move + player_2_move - Strings to be processed
+  # no parameters
   #
   # Example:
   #
@@ -30,11 +30,6 @@ class Game
   # 
   # no parameters
   #
-  # Example:
-  #
-  # determine_number_of_games (after puts statement 2 is entered)
-  # => 2
-  #
   # Returns Integer of amount of games needed to win
   def determine_number_of_games
     puts "How many games should a player win in order to win the set?"
@@ -44,7 +39,7 @@ class Game
 
   # Finds move for player 1
   #
-  # player_1_move - String of player's move
+  # no parameters
   #
   # Example:
   # 
@@ -60,7 +55,7 @@ class Game
 
   # Finds move for player 2
   #
-  # player_2_move - String of player's move
+  # no parameters
   #
   # Example:
   # 
@@ -74,44 +69,76 @@ class Game
     return @player_2_move
   end
 
-  #TomDoc
+  # sets score for both players to 0
+  #
+  # no parameters
+  #
+  # Returns Hash of two players, both with 0 score
   def set_initial_score
     @current_Score = {"Player 1"=>0, "Player 2"=>0}
     return @current_Score
   end
 
-  #TomDoc
+  # determines whether a game-ending score has been reached
+  #
+  # no parameters
+  #
+  # returns true if no player has reached point requirement
   def game_time?
     @current_Score.values.max<@games_needed_to_win
   end
 
-  #TomDoc
+  # determines whether both players have entered the same move
+  #
+  # no parameters
+  #
+  # Returns true if players have entered different moves
   def not_a_draw?
     @player_1_move != @player_2_move
   end
 
-  #TomDoc
+  # adds 1 point to match winner's score
+  #
+  # no parameters
+  #
+  # returns updated Integer of match winner's score
   def add_point_to_winner
     @current_Score["#{@match_Winner}"] += 1
   end
 
-  #TomDoc
+  # announces winner of most recent match
+  #
+  # no parameters
+  #
+  # returns puts statements of match winner and updated scores
   def announce_match_winner
     puts "One point for " + @match_Winner + "!"
     puts "Player 1 has #{@current_Score["Player 1"]} point(s), and player 2 has #{@current_Score["Player 2"]} point(s)."
   end
 
-  #TomDoc
+  # determines whether player 1 has won the game
+  #
+  # no parameters
+  #
+  # returns true if player 1 has won the game
   def player_1_wins?
     @current_Score["Player 1"] >= @games_needed_to_win
   end
 
-  #TomDoc
+  # determines whether player 2 has won the game
+  #
+  # no parameters
+  #
+  # returns true if player 2 has won the game
   def player_2_wins?
     @current_Score["Player 2"] >= @games_needed_to_win
   end
 
-  #TomDoc
+  # loops through game as many times as requested by players
+  #
+  # no parameters
+  #
+  # returns puts statement of set winner
   def run_through_game
     puts "Let's play a game of Rock-Paper-Scissors."
 

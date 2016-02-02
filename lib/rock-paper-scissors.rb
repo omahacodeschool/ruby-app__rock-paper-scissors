@@ -22,11 +22,11 @@ end
 
 # Defines a tie set
 #
-# player_1_weapon, player_2_weapon - A string of either "rock","paper", or "scissors"
+# $player_1_weapon, $player_2_weapon - A string of either "rock","paper", or "scissors"
 #
 # Returns True or False
-def tie_set(player_1_weapon,player_2_weapon)
-  player_1_weapon == player_2_weapon
+def tie_set
+  $player_1_weapon == $player_2_weapon
 end
 
 
@@ -133,36 +133,57 @@ def match_winner_text
 end
 
 
+# Defines a win by Player 1 with paper weapon
+#
+# $player_1_weapon, $player_2_weapon - A string of either "rock","paper", or "scissors"
+#
+# Returns either true or false
+def player_1_wins_with_paper
+  $player_1_weapon == "paper" && $player_2_weapon != "scissors"
+end
 
 
+# Defines a win by Player 1 with scissors weapon
+#
+# $player_1_weapon, $player_2_weapon - A string of either "rock","paper", or "scissors"
+#
+# Returns either true or false
+def player_1_wins_with_scissors
+  $player_1_weapon == "scissors" && $player_2_weapon != "rock"
+end
+
+
+# Defines a win by Player 1 with rock weapon
+#
+# $player_1_weapon, $player_2_weapon - A string of either "rock","paper", or "scissors"
+#
+# Returns either true or false
+def player_1_wins_with_rock
+  $player_1_weapon == "rock" && $player_2_weapon != "paper"
+end
 
 $p1_wins = 0
 $p2_wins = 0
 
-
-
 match = get_number_sets
-
-
-
 
 while $p1_wins + $p2_wins != match
 
-player_1_weapon = get_p1_weapon
-player_2_weapon = get_p2_weapon
+$player_1_weapon = get_p1_weapon
+$player_2_weapon = get_p2_weapon
 
-  if tie_set(player_1_weapon, player_2_weapon) 
+  if tie_set 
     tie_set_text
 
-  elsif player_1_weapon == "paper" && player_2_weapon != "scissors"
+  elsif player_1_wins_with_paper
     display_player_1_wins
     p1_increase_set_counter
     
-  elsif player_1_weapon == "scissors" && player_2_weapon != "rock"
+  elsif player_1_wins_with_scissors
     display_player_1_wins
     p1_increase_set_counter
     
-  elsif player_1_weapon == "rock" && player_2_weapon != "paper"
+  elsif player_1_wins_with_rock
     display_player_1_wins
     p1_increase_set_counter
     

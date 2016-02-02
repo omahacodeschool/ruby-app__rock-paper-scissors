@@ -1,3 +1,4 @@
+require_relative '../lib/player.rb'
 
 
 class RockPaperScissorsGame
@@ -9,16 +10,16 @@ class RockPaperScissorsGame
 		computer_game = gets.chomp.downcase
 
 		puts "Player one, please type your name."
-		set_p1_name(get_player_name)
-
-
+		@player1 = Player.new
+		@player1.set_p1_name(@player1.get_player_name)
 
 		if computer_game == "yes" 
 			@player2 = "Hal"
 
 		else
 			puts "Player two, please type your name."
-			set_p2_name(get_player_name)
+			@player2 = Player.new
+			@player2.set_p2_name(@player2.get_player_name)
 		end
 
 
@@ -27,6 +28,7 @@ class RockPaperScissorsGame
 
 		round_number = 0
 
+		#add this to player class .initialize?
 		score = {@player1 => 0, @player2 => 0}
 
 		while round_number < number_of_games
@@ -77,14 +79,7 @@ class RockPaperScissorsGame
 
 	end
 
-	#Get a @player's name
-	#
-	#
-	#Returns a @player's name
-	def get_player_name
-		puts "\n-------------------------------------------------------"
-		return gets.chomp.capitalize
-	end
+
 
 
 	#Get a @player's input
@@ -138,19 +133,6 @@ class RockPaperScissorsGame
 		end
 	end
 
-	#set player one's name
-	#
-	#str - is the String that is input
-	def set_p1_name(str)
-		return @player1 = str
-	end
-
-	#set player two's name
-	#
-	#str - is the String that is input
-	def set_p2_name(str)
-		return @player2 = str
-	end
 
 	#set player one's weapon
 	#
@@ -167,7 +149,9 @@ class RockPaperScissorsGame
 	end
 
 end
-# game_on
+
+x = RockPaperScissorsGame.new
+x.game_on
 
 
 

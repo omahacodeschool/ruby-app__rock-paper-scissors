@@ -4,10 +4,12 @@
 class Game
 
 def setup
-  #@player_1_name
+  player_names
+
+  @player_1_name
   @player_1_score = 0
 
-  #@player_2_name
+  @player_2_name
   @player_2_score = 0
 
   # @player_victory = (determine_series_win + 1) / 2
@@ -38,12 +40,12 @@ end
     #md = match_duration.to_i
 # end
 
-# def player_names
-#   puts "What name do you want to use, Player 1?"
-#     @player_1_name = gets.chomp
-#   puts "What name do you want to use, Player 2?"
-#     @player_2_name = gets.chomp
-# end
+def player_names
+  puts "What name do you want to use, Player 1?"
+    @player_1_name = gets.chomp
+  puts "What name do you want to use, Player 2?"
+    @player_2_name = gets.chomp
+end
 
 
 def choose_weapons
@@ -75,9 +77,9 @@ end
 
 def display_winner_one_game(r)
   if r == 1
-    puts "Player_1 wins"
+    puts "#{@player_1_name} wins"
   elsif r == 2
-    puts "Player_2 wins"
+    puts "#{@player_2_name} wins"
   else
     puts "Tie"
   end

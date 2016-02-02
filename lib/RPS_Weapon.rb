@@ -1,13 +1,16 @@
+require_relative 'RPS_Main'
+
 class Weapon
 
   def initialize()
     @weapon = ""
     @other_weapon = ""
     @battle_result = 0
+    @weapon_hash =Hash.new(0)
   end
 
   def set_weapon()
-    print "PLAYER TWO, what is your weapon of choice?  "
+    print "#{$player_name}, what is your weapon of choice?  "
     weapon = gets.chomp.downcase
 
     case weapon
@@ -31,20 +34,20 @@ class Weapon
   end
 
   def set_other_weapon()
-    print "PLAYER TWO, what is your weapon of choice?  "
+    print "#{$other_player_name}, what is your weapon of choice?  "
     other_weapon = gets.chomp.downcase
 
     case other_weapon
       when "rock"
-        return other_weapon = "rock"
+        other_weapon = "rock"
       when "paper"
-        return other_weapon = "paper"
+        other_weapon = "paper"
       when "scissors"
-        return other_weapon = "scissors"
+        other_weapon = "scissors"
       when "lizard"
-        return other_weapon = "lizard"
+        other_weapon = "lizard"
       when "spock"
-        return other_weapon = "spock"
+        other_weapon = "spock"
       else
         puts "That's not a valid choice, you goon. Pick again."
         set_other_weapon()
@@ -73,16 +76,25 @@ class Weapon
 end
 
 def set_battle()
-  if @weapon == @other_weapon 
-    @battle_result = 0
-  end
 
-  if (@weapon == "scissors" && @weapon2 == "paper") || (@weapon == "rock" && @other_weapon == "scissors") || ( @weapon == "paper" && @other_weapon == "rock")
+  if (@weapon == "scissors") && (@other_weapon  == "paper")
+     @battle_result = 1
+   end
+
+  if (@weapon == "rock") && (@other_weapon == "scissors" )
     @battle_result = 1
   end
+
+  if (@weapon == "paper") && (@other_weapon == "rock")
+     @battle_result = 1
+   end
   
-  if (@weapon == "rock" && @other_weapon == "paper") || (@weapon == "scissors" && @other_weapon == "rock") || ( @weapon == "paper" && @other_weapon == "scissors")
-    @battle_result = 2 
+  if (@weapon == "rock") && (@other_weapon == "paper") || (@weapon == "scissors" && @other_weapon == "rock") || ( @weapon == "paper") && (@other_weapon == "scissors")
+     @battle_result = 2 
+  end
+
+  if @weapon == @other_weapon 
+    @battle_result = 0
   end
 end
 
@@ -90,22 +102,6 @@ end
       return @battle_result
   end
 
-def battle_outcome()
-
-  if @battle_result == 1
-    set_games_won()
-    return get_victory_confirmation() + " " + get_other_loss_confirmation()
-
-  elsif @battle_result == 2
-    set_other_games_won()
-    return get_loss_confirmation() + " " + get_other_victory_confirmation()
-
-  else @battle_result == 0
-    set_games_tied()
-    return get_tie_confirmation()
-  end
-
-end
 
 
 

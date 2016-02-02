@@ -1,16 +1,23 @@
 require_relative 'RPS_Weapon'
 require_relative 'RPS_score_count'
 
-
 class Main_rps
 
   def initialize()
-    @player_name = ""
-    @other_player_name = ""
+    $player_name = ""
+    $other_player_name = ""
     @max_games = 0
     @played_games = 0
     @weapon = Weapon.new()
     @score_count = Score_count.new()
+
+  def run_game()
+    set_max_games()
+    establish_players
+    puts play_through_set()
+    set_determine_set_winner()
+    puts winner_message()
+  end
 
   def establish_players()
     set_name()
@@ -26,7 +33,6 @@ class Main_rps
       reset_player_weapons()
       set_battle()
       puts battle_outcome()
-      reset_player_weapons()
       set_played_games()
     end
   end
@@ -52,15 +58,12 @@ class Main_rps
 
   def set_name()
      print "PLAYER ONE, enter your name:  "
-     player_name = gets.chomp
-     @player_name = player_name
-     
+     $player_name = gets.chomp
   end
 
    def set_other_name()
      print "PLAYER TWO, enter your name:  "
-     other_player_name = gets.chomp
-     @other_player_name = other_player_name 
+     $other_player_name = gets.chomp
   end
 
   # DOES: 
@@ -141,54 +144,69 @@ class Main_rps
 
 
   def battle_outcome()
-    return @weapon.battle_outcome()
+
+  if @weapon.get_battle() == 1
+    set_games_won()
+    puts get_victory_confirmation() + " " + get_other_loss_confirmation()
+
+  elsif @weapon.get_battle() == 2
+    set_other_games_won()
+    puts get_loss_confirmation() + " " + get_other_victory_confirmation()
+
+  else @weapon.get_battle() == 0
+    set_games_tied()
+    puts get_tie_confirmation()
   end
+
+end
 
   def set_determine_set_winner()
     @score_count.set_determine_set_winner()
   end
 
   def get_determine_set_winner()
-    @score_count.get_determine_set_winner()
+    return @score_count.get_determine_set_winner()
+  end
+
+   def winner_message()
+    if @score_count.get_determine_set_winner() == 1
+    return "#{$player_name} won the set of games with a score of #{@score_count.get_games_won()} vs. #{@score_count.get_other_games_won()}. Both players tied #{@score_count.get_games_tied} time(s)."
+
+    elsif @score_count.get_determine_set_winner() == 2
+      return "#{$other_player_name} won the set of games with a score of #{@score_count.get_other_games_won()} vs. #{@score_count.get_games_won()}. Both players tied #{@score_count.get_games_tied} time(s)."
+          
+    else @score_count.get_determine_set_winner() == 0
+      return "It was a tie, guys. You're both just super duper."
+    end
   end
 
   # DOES: 
   #
   # Returns String
   def get_victory_confirmation()
-    return "#{get_name} wins with #{get_weapon}!"
+    return "#{ $player_name} wins with #{@weapon.get_weapon()}!"
   end
 
   def get_other_victory_confirmation()
-    return "#{get_other_name} wins with #{get_other_weapon}!"
+    return "#{$other_player_name} wins with #{@weapon.get_other_weapon()}!"
   end
 
   # DOES: 
   #
   # Returns String
   def get_loss_confirmation()
-    return "#{get_name} loses with #{get_weapon}!"
+    return "#{$player_name} loses with #{@weapon.get_weapon()}!"
   end
 
   def get_other_loss_confirmation()
-    return "#{get_other_name} loses with #{get_other_weapon}!"
+    return "#{$other_player_name} loses with #{@weapon.get_other_weapon()}!"
   end
 
   # DOES: 
   #
   # Returns String
   def get_tie_confirmation()
-    return "Both players tie with #{get_weapon}!"
-  end
-
-  def run_game()
-    
-    set_max_games()
-    establish_players
-    puts play_through_set()
-    set_determine_set_winner()
-    puts get_determine_set_winner()
-
+    return "Both players tie with #{@weapon.get_weapon()}!"
   end
   
 end

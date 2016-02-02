@@ -1,125 +1,192 @@
-puts "Enter number of games to play"
-rounds = gets.chomp.to_i
-
-$p1_wins = 0
-$p2_wins = 0
-final_score = {}
-
-while p1_wins + p2_wins != rounds
-
-puts "Choose your weapon, Player 1"
-player_1_weapon = gets.chomp.downcase
-
-puts "Choose your weapon, Player 2"
-player_2_weapon = gets.chomp.downcase
-
-  if tie_game(player_1_weapon, player_2_weapon) #for some reason says its not defined but it actually is
-    puts "Tie game. No points awarded. Stop favoring rock!"
-
-  elsif player_1_weapon == "paper" && player_2_weapon != "scissors"
-    puts "Player 1 Wins!"
-    p1_wins += 1
-    puts "The score is Player 1 with #{p1_wins} points to Player 2 with #{p2_wins} points"
-
-  elsif player_1_weapon == "scissors" && player_2_weapon != "rock"
-    puts "Player 1 Wins!"
-    p1_wins += 1
-    puts "The score is Player 1 with #{p1_wins} points to Player 2 with #{p2_wins} points"
-
-  elsif player_1_weapon == "rock" && player_2_weapon != "paper"
-    puts "Player 1 Wins!"
-    p1_wins += 1
-    puts "The score is Player 1 with #{p1_wins} points to Player 2 with #{p2_wins} points"
-
-  else
-    puts "Player 2 Wins!" 
-    p2_wins += 1
-    puts "The score is Player 1 with #{p1_wins} points to Player 2 with #{p2_wins} points"
-  end
-
-end
-
-final_score["Player 1"] = p1_wins
-final_score["Player 2"] = p2_wins
-
-if p1_wins == p2_wins
-  puts "This was a tie game folks!"
-
-elsif p1_wins != p2_wins
-  puts "#{final_score.max_by{|k,v| v}[0]}" + " wins the game!!!"
+# Defines Player 1's weapon
+#
+# User entered
+#
+# Returns lowercase string
+def get_p1_weapon
+  puts "Choose your weapon, Player 1"
+  gets.chomp.downcase
 end
 
 
+# Defines Player 2's weapon
+#
+# User entered
+#
+# Returns lowercase string
+def get_p2_weapon
+  puts "Choose your weapon, Player 2"
+  gets.chomp.downcase
+end
 
 
-
-
-# Defines a tie game
+# Defines a tie set
 #
 # player_1_weapon, player_2_weapon - A string of either "rock","paper", or "scissors"
 #
 # Returns True or False
-def tie_game(player_1_weapon,player_2_weapon)
+def tie_set(player_1_weapon,player_2_weapon)
   player_1_weapon == player_2_weapon
 end
 
 
-
-# Defines a win with "paper"
+# Defines a tied match
 #
-# player_1_weapon, player_2_weapon - A string of either "rock","paper", or "scissors"
-#
-# Returns True or False
-# Increases win counter by 1
-def paper_win(player_1_weapon,player_2_weapon)
-  player_1_weapon == "paper" && player_2_weapon != "scissors"
-  p1_wins += 1
-end
-
-
-
-# Defines a win with "scissors"
-#
-# player_1_weapon, player_2_weapon - A string of either "rock","paper", or "scissors"
-#
-# Returns True or False
-# Increases win counter by 1
-def scissors_win(player_1_weapon,player_2_weapon)
-  player_1_weapon == "scissors" && player_2_weapon != "rock"
-  p1_wins += 1
-end
-
-
-
-# Defines a win with "rock"
-#
-# player_1_weapon, player_2_weapon - A string of either "rock","paper", or "scissors"
-#
-# Returns True or False
-# Increases win counter by 1
-def rock_win(player_1_weapon,player_2_weapon)
-  player_1_weapon == "rock" && player_2_weapon != "paper"
-  p1_wins += 1
-end
-
-
-
-# Defines a tied set
-#
-#p1_wins,p2_wins - The number of rounds won in a set
+#Player 1 and Player 2s number of set wins
 #
 #Returns True or False
-def tie_win(p1_wins,p2_wins)
-  p1_wins == p2_wins
+def tie_match
+  $p1_wins == $p2_wins
 end
 
 
-
-# Defines a not tied set
+# Defines a winning match
 #
-#p1_wins,p2_wins - The number of rounds won in a set
+#Player 1 and Player 2s number of set wins
 #
 #Returns True or False
-def set_winner(p1_wins,p2_wins)
-  p1_wins != p2_wins
+def winning_match
+  $p1_wins != $p2_wins
 end
+
+
+# Defines an updated score
+#
+#Player 1 and Player 2s number of set wins
+#
+#Puts current score
+def score_update
+  puts "The score is Player 1 with #{$p1_wins} points to Player 2 with #{$p2_wins} points"
+end
+
+
+# Defines set counter increase by 1 after a win
+#
+#Player 1's number of set wins
+#
+#returns integer
+def p1_increase_set_counter
+  $p1_wins += 1
+end
+
+
+# Defines set counter increase by 1 after a win
+#
+#Player 2's number of set wins
+#
+#returns integer
+def p2_increase_set_counter
+  $p2_wins += 1
+end
+
+
+# Displays Player 1 set win text
+def display_player_1_wins
+  puts "Player 1 Wins!!!"
+end
+
+
+# Displays Player 2 set win text
+def display_player_2_wins
+  puts "Player 2 Wins!!!"
+end
+
+
+# Defines the number of sets
+#
+# User entered
+#
+# Returns integer
+def get_number_sets
+  puts "Enter the number of sets you would like to play"
+  gets.chomp.to_i
+end
+
+
+# Displays tie set text
+def tie_set_text
+  puts "Tie set. No points awarded. Stop favoring rock!"
+end
+
+
+# Displays tie match text
+def tie_match_text
+  puts "It's a tie ballgame folks!!!"
+end
+
+
+# Defines the match winner
+#
+# Player 1 and Player 2 number of set wins
+def player_with_highest_score
+  players_points={}
+  players_points["Player 1"] = $p1_wins
+  players_points["Player 2"] = $p2_wins
+  highest_score = players_points.values.max
+  player_with_highest_score = players_points.select {|k,v|v == highest_score}.keys
+end
+
+
+# Displays winning match player text
+def match_winner_text
+  puts player_with_highest_score.join.upcase + " WINS!!!"
+end
+
+
+
+
+
+$p1_wins = 0
+$p2_wins = 0
+
+
+
+match = get_number_sets
+
+
+
+
+while $p1_wins + $p2_wins != match
+
+player_1_weapon = get_p1_weapon
+player_2_weapon = get_p2_weapon
+
+  if tie_set(player_1_weapon, player_2_weapon) 
+    tie_set_text
+
+  elsif player_1_weapon == "paper" && player_2_weapon != "scissors"
+    display_player_1_wins
+    p1_increase_set_counter
+    
+  elsif player_1_weapon == "scissors" && player_2_weapon != "rock"
+    display_player_1_wins
+    p1_increase_set_counter
+    
+  elsif player_1_weapon == "rock" && player_2_weapon != "paper"
+    display_player_1_wins
+    p1_increase_set_counter
+    
+  else
+    display_player_2_wins
+    p2_increase_set_counter
+  end
+
+  score_update
+end
+
+if tie_match
+  tie_match_text
+
+elsif winning_match
+  match_winner_text
+end
+
+
+
+
+
+
+
+
+
+

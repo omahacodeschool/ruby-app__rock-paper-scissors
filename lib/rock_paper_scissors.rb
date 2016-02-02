@@ -6,7 +6,7 @@ class Game
 #the course of the game
 #
     def refresher
-        @best_of = intro
+        # @best_of = intro
         @player1_score = 0
         @player2_score = 0
         @tie_score = 0
@@ -116,7 +116,9 @@ class Game
 #reseting the @match value between matches
 #
     def game_runner
+        @best_of = intro
         until @game == @best_of do
+            
             player1 = player_setup1
             player2 = player_setup2
             rps_rules(player1,player2)
@@ -128,9 +130,9 @@ class Game
     end
 end
 
-x = Game.new
-x.refresher
-x.game_runner
+# x = Game.new
+# x.refresher
+# x.game_runner
 
 
 

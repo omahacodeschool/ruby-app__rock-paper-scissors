@@ -23,11 +23,11 @@ system "clear"
 #
 #Here are the rules for the game and a scoring method is put in place
 # 
-    if
+    if  
         ((player1 == 'R') && (player2 == 'S') ||
         (player1 == 'S') && (player2 == 'P')||
         (player1 == 'P') && (player2 == 'R'))
-        puts "Player 1 Wins"
+        puts "Player 1 Wins--player1 #{player1_score}"
         player1_score += 1
         game += 1
     elsif 

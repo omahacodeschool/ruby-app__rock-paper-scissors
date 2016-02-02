@@ -12,7 +12,7 @@ class Main_rps
     @score_count = Score_count.new()
   end
 
-## START GAME FUNCTIONALITY METHODS
+## START: GAME FUNCTIONALITY METHODS
 
   def run_full_game()
     set_max_games()
@@ -81,7 +81,7 @@ class Main_rps
   ## END: GAME FUNCTIONALITY METHODS
 
 
-  ## START GAME SCORING METHODS -> LINKED CLASS FROM RPS_score_count.rb
+  ## START: GAME SCORING METHODS -> LINKED CLASS FROM RPS_score_count.rb
 
   def set_games_won()
     @score_count.set_games_won()
@@ -121,16 +121,16 @@ class Main_rps
   end
 
   def set_determine_set_winner()
-  @score_count.set_determine_set_winner()
-end
+    @score_count.set_determine_set_winner()
+  end
 
-def get_determine_set_winner()
-  return @score_count.get_determine_set_winner()
-end
+  def get_determine_set_winner()
+    return @score_count.get_determine_set_winner()
+  end
 ## END: GAME SCORING METHODS -> LINKED CLASS FROM RPS_score_count.rb
    
 
- ## START WEAPON & BATTLE METHODS -> LINKED CLASS FROM RPS_Weapons.rb
+ ## START WEAPON & BATTLE METHODS -> LINKED CLASS FROM RPS_Weapons.r
 
   def set_weapon()
     @weapon.set_weapon()
@@ -153,26 +153,24 @@ end
   end
 
   def get_battle()
-      return @weapon.get_battle()
+    return @weapon.get_battle()
   end
 
   def battle_outcome()
+    if @weapon.get_battle() == 1
+      set_games_won()
+      puts get_victory_confirmation() + " " + get_other_loss_confirmation()
 
-  if @weapon.get_battle() == 1
-    set_games_won()
-    puts get_victory_confirmation() + " " + get_other_loss_confirmation()
+    elsif @weapon.get_battle() == 2
+      set_other_games_won()
+      puts get_loss_confirmation() + " " + get_other_victory_confirmation()
 
-  elsif @weapon.get_battle() == 2
-    set_other_games_won()
-    puts get_loss_confirmation() + " " + get_other_victory_confirmation()
-
-  else @weapon.get_battle() == 0
-    set_games_tied()
-    puts get_tie_confirmation()
+    else @weapon.get_battle() == 0
+      set_games_tied()
+      puts get_tie_confirmation()
+    end
   end
-
-end
-
+## END: WEAPON & BATTLE METHODS -> LINKED CLASS FROM RPS_Weapons.rb
 
 ## START: TEXT-BASED NOTIFICATION METHODS 
 

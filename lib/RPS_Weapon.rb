@@ -6,7 +6,6 @@ class Weapon
     @weapon = ""
     @other_weapon = ""
     @battle_result = 0
-    @weapon_hash =Hash.new(0)
   end
 
   def set_weapon()
@@ -21,12 +20,12 @@ class Weapon
     when "scissors"
       weapon = "scissors"
     when "lizard"
-      weapon = "lizard"
+      return weapon = "lizard"
     when "spock"
       weapon = "spock"
     else
       puts "That's not a valid choice, you goon. Pick again."
-      set_weapon()
+      weapon = set_weapon()
     end
    
     @weapon = weapon
@@ -50,7 +49,7 @@ class Weapon
         other_weapon = "spock"
       else
         puts "That's not a valid choice, you goon. Pick again."
-        set_other_weapon()
+        other_weapon = set_other_weapon()
       end
    
     @other_weapon = other_weapon
@@ -76,31 +75,21 @@ class Weapon
 end
 
 def set_battle()
-
-  if (@weapon == "scissors") && (@other_weapon  == "paper")
-     @battle_result = 1
-   end
-
-  if (@weapon == "rock") && (@other_weapon == "scissors" )
+  if (@weapon == "scissors" && @weapon2 == "paper") || (@weapon == "rock" && @other_weapon == "scissors") || ( @weapon == "paper" && @other_weapon == "rock")
     @battle_result = 1
-  end
-
-  if (@weapon == "paper") && (@other_weapon == "rock")
-     @battle_result = 1
-   end
   
-  if (@weapon == "rock") && (@other_weapon == "paper") || (@weapon == "scissors" && @other_weapon == "rock") || ( @weapon == "paper") && (@other_weapon == "scissors")
-     @battle_result = 2 
-  end
+  elsif (@weapon == "rock" && @other_weapon == "paper") || (@weapon == "scissors" && @other_weapon == "rock") || ( @weapon == "paper" && @other_weapon == "scissors")
+    @battle_result = 2 
 
-  if @weapon == @other_weapon 
+  else
+    @weapon == @other_weapon 
     @battle_result = 0
   end
 end
 
-  def get_battle()
-      return @battle_result
-  end
+def get_battle()
+  return @battle_result
+end
 
 
 

@@ -2,12 +2,12 @@ require 'test_helper'
 require 'rock_paper_scissors'
 
 # class RockPaperScissorsTest < Minitest::Test
-#   def test_numbers_with_no_punctuation
-#     phone_num = "1231235555"
-#     assert_equal("(123) 123-5555", format_phone_number(phone_num))
+#   def test player_1_wins
+#      = "rock"
+#     assert_equal("rock", player_1_wins(player_1))
 #   end
 
-#   def test_random_spaces
+#   def test_player_2_wins
 #     phone_num = "1 23 123  55 5 5"
 #     assert_equal("(123) 123-5555", format_phone_number(phone_num))
 #   end
@@ -27,4 +27,4 @@ require 'rock_paper_scissors'
 #     assert_equal("(123) 123-5555", format_phone_number(phone_num))
 #   end
 
-end
+# 

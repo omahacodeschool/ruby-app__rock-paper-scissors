@@ -1,4 +1,4 @@
-#WIP
+#WIP - ***IGNORE FOR NOW***
 #vs computer version
 =begin
   

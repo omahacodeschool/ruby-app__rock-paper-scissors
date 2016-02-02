@@ -39,30 +39,37 @@ def how_won(weapon_p1,weapon_p2)
     return scissors_cut_paper
   elsif weapon_p2 =="scissors" && weapon_p1 == "paper"
     return scissors_cut_paper 
-  else
-    return nil
+  else weapon_p1 == weapon_p2
+    return draw
   end
 end
 
-def display_game_result(winning_action, winner)
-  if winning_action == rock_smashes_scissors
+def display_game_result(winner)
+  if how_won == rock_smashes_scissors
     puts "Rock Smashes Scissors"
-  elsif winning_action == paper_covers_rock
+  elsif how_won == paper_covers_rock
     puts "Paper Covers Rock"
-  elsif winning_action == scissors_cut_paper
+  elsif how_won == scissors_cut_paper
     puts "Scissors Cut Paper"
-  elsif winner == 1
+  else how_won == draw
+    puts "#{p1_weapon} equals #{p2_weapon}"
+  end
+
+  if winner == 1
     puts "Player 1 Wins!"
   elsif winner == 2
     puts "Player 2 Wins!"
   else
     puts "It's a Draw!"
+  end
+
 end
       
 
 p1_weapon = get_player_1_weapon
 p2_weapon = get_player_2_weapon
+
 game_result = game_winner(p1_weapon, p2_weapon)
-display_game_result(how_won, game_result)
+display_game_result(game_result)
 
 

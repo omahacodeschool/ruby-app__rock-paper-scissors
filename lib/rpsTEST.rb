@@ -1,7 +1,7 @@
 require_relative 'test_helper.rb'
 require_relative 'paperrockscissorsrefactored.rb'
 
-class RPStest < Minitest::Test
+class RockPaperScissorsTest < Minitest::Test
   def test_rock1
     test = Game.new
     player1 = "P"

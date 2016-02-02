@@ -38,6 +38,13 @@ class Game
     gets.chomp.downcase
   end
 
+  def set_player1_move(x)
+    @player1_move = x
+  end
+
+  def set_player2_move(x)
+    @player2_move = x
+  end
 
   #Plays a game of rock-paper-scissors.
   #
@@ -82,23 +89,23 @@ class Game
   #num - 
   #
   #returns an Integer increasing the w
-  #def winner_count(result, player_one_wins, player_two_wins)
-  # if result == 1
-  #    player_one_wins += 1
-  #  elsif result == 2
-  #    player_two_wins += 1
-  #  else result == nil
-  #    games_played -= 1
-  #  end
-  #end
+  def winner_count
+   if @result == 1
+      @player_one_wins += 1
+    elsif @result == 2
+      @player_two_wins += 1
+    else @result == nil
+      @games_played -= 1
+    end
+  end
 
   #declares the winner of the set
   #
   #num - two Integers
   #
   #returns a String letting the players know who has won the set of paper-rock-scissors.
-  def set_results_winner(player_one_wins, player_two_wins)
-    if player_one_wins > player_two_wins
+  def set_results_winner
+    if @player_one_wins > @player_two_wins
       return "\nPlayers one is the is the winner of the set!"
     else
       return "\nPlayer two is the winner of the set!"
@@ -108,31 +115,23 @@ class Game
   #should I tomdoc this?
   def run_game
     games_to_play = amount_of_games_to_play
-    player_one_wins = 0
-    player_two_wins = 0
-    games_played = 0
+    @player_one_wins = 0
+    @player_two_wins = 0
+    @games_played = 0
 
     
-    while games_played < games_to_play 
+    while @games_played < games_to_play 
       
-      @player1_move = getting_player1_move
-      @player2_move = getting_player2_move
+      set_player1_move(getting_player1_move)
+      set_player2_move(getting_player2_move)
       prs_game
       @result = prs_game
       puts individual_game_winner
-      #winner_count(result, player_one_wins, player_two_wins)
-      if @result == 1 
-       player_one_wins += 1
-      elsif @result == 2  
-        player_two_wins += 1
-      else @result == nil  
-        games_played -= 1
-      end
-      
-      games_played += 1
+      winner_count
+      @games_played += 1
     end
     
-    puts set_results_winner(player_one_wins, player_two_wins)
+    puts set_results_winner
   end
 end
 

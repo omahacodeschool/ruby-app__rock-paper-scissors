@@ -2,7 +2,7 @@
 def paper_rock_scissors
   puts "\nLets play a set of paper-rock-scissors."
 
-  puts "\nGive me an odd number. Best of the 3, 5, 7... It's your choice." 
+  puts "\nGive me an odd number. Best of 3, 5, 7... It's your choice." 
   
   amount_of_games_to_play = gets.chomp.to_i
 
@@ -12,11 +12,12 @@ def paper_rock_scissors
 
   while games_played < amount_of_games_to_play 
     
-    puts "\nPlayer one your turn."
+    puts "\nPlayer one it's your turn."
     str1 = gets.chomp.downcase
     
-    puts "\nOkay! Player two your turn."
+    puts "\nOkay! Player two it's your turn."
     str2 = gets.chomp.downcase
+    
     
     if str1 == "scissors" 
       if str2 == "paper"
@@ -56,6 +57,7 @@ def paper_rock_scissors
         player_two_wins += 1
       end 
     end
+    
     games_played += 1
   end
 
@@ -65,6 +67,5 @@ def paper_rock_scissors
     puts "\nPlayer two is the winner!"
   end
 end
-
 
 puts paper_rock_scissors

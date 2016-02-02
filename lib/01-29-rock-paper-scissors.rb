@@ -53,6 +53,10 @@ class Game
     return @player_1_move
   end
 
+  def set_player_1 (x)
+    @player_1_move = x
+  end
+
   # Finds move for player 2
   #
   # no parameters
@@ -67,6 +71,10 @@ class Game
     puts "Player 2, what's your move?"
     @player_2_move = gets.chomp.downcase
     return @player_2_move
+  end
+
+  def set_player_2 (x)
+    @player_2_move = x
   end
 
   # sets score for both players to 0

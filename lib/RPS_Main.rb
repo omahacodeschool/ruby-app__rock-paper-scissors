@@ -10,25 +10,19 @@ class Main_rps
     @played_games = 0
     @weapon = Weapon.new()
     @score_count = Score_count.new()
+  end
 
-  def run_game()
+## START GAME FUNCTIONALITY METHODS
+
+  def run_full_game()
     set_max_games()
     establish_players
-    puts play_through_set()
+    puts play_through_set_of_games()
     set_determine_set_winner()
-    puts winner_message()
+    puts overall_winner_message()
   end
 
-  def establish_players()
-    set_name()
-    set_other_name()
-  end
-
-  def reset_player_weapons()
-   @weapon.reset_player_weapons()
-  end
-
-  def play_through_set()
+  def play_through_set_of_games()
     while @played_games < @max_games do
       reset_player_weapons()
       set_battle()
@@ -48,6 +42,15 @@ class Main_rps
     return @max_games
   end
 
+  def establish_players()
+    set_name()
+    set_other_name()
+  end
+
+  def reset_player_weapons()
+   @weapon.reset_player_weapons()
+  end
+
   def set_played_games()
       @played_games += 1
   end
@@ -61,32 +64,40 @@ class Main_rps
      $player_name = gets.chomp
   end
 
+  def get_name()
+    return @player_name
+  end
+
+
    def set_other_name()
      print "PLAYER TWO, enter your name:  "
      $other_player_name = gets.chomp
-  end
-
-  # DOES: 
-  #
-  # @player_name
-  #
-  # Returns String
-  def get_name()
-    return @player_name
   end
 
   def get_other_name()
     return @other_player_name
   end
 
+  ## END: GAME FUNCTIONALITY METHODS
+
+
+  ## START GAME SCORING METHODS -> LINKED CLASS FROM RPS_score_count.rb
+
   def set_games_won()
     @score_count.set_games_won()
+  end
+
+  def get_games_won()
+    return @score_count.get_games_won()
   end
 
   def set_other_games_won()
      @score_count.set_other_games_won()
   end
 
+  def get_other_games_won()
+     @score_count.get_other_games_won()
+  end
   # DOES: 
   #
   # @score_count.get_games_won
@@ -94,10 +105,6 @@ class Main_rps
   # Returns Integer
   def get_games_won()
     return @score_count.get_games_won()
-  end
-
-  def get_other_games_won()
-     @score_count.get_other_games_won()
   end
 
   def set_games_tied()
@@ -113,21 +120,28 @@ class Main_rps
     return @score_count.get_games_tied
   end
 
-   def set_weapon()
+  def set_determine_set_winner()
+  @score_count.set_determine_set_winner()
+end
+
+def get_determine_set_winner()
+  return @score_count.get_determine_set_winner()
+end
+## END: GAME SCORING METHODS -> LINKED CLASS FROM RPS_score_count.rb
+   
+
+ ## START WEAPON & BATTLE METHODS -> LINKED CLASS FROM RPS_Weapons.rb
+
+  def set_weapon()
     @weapon.set_weapon()
+  end
+
+  def get_weapon()
+    return @weapon.get_weapon()
   end
 
   def set_other_weapon()
     @weapon.set_other_weapon()
-  end
-
-  # DOES: 
-  #
-  # @weapon.get_weapon()
-  #
-  # Returns Method
-  def get_weapon()
-    return @weapon.get_weapon()
   end
 
   def get_other_weapon()
@@ -141,7 +155,6 @@ class Main_rps
   def get_battle()
       return @weapon.get_battle()
   end
-
 
   def battle_outcome()
 
@@ -160,15 +173,10 @@ class Main_rps
 
 end
 
-  def set_determine_set_winner()
-    @score_count.set_determine_set_winner()
-  end
 
-  def get_determine_set_winner()
-    return @score_count.get_determine_set_winner()
-  end
+## START: TEXT-BASED NOTIFICATION METHODS 
 
-   def winner_message()
+  def overall_winner_message()
     if @score_count.get_determine_set_winner() == 1
     return "#{$player_name} won the set of games with a score of #{@score_count.get_games_won()} vs. #{@score_count.get_other_games_won()}. Both players tied #{@score_count.get_games_tied} time(s)."
 
@@ -208,6 +216,7 @@ end
   def get_tie_confirmation()
     return "Both players tie with #{@weapon.get_weapon()}!"
   end
+
+## END: TEXT-BASED NOTIFICATION METHODS 
   
-end
 end

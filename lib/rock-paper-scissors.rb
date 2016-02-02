@@ -1,15 +1,15 @@
-def fun_get_player_1_weapon
+def get_player_1_weapon
   puts "Player 1, unleash your weapon:"
   return gets.chomp
 end
 
-def fun_get_player_2_weapon
+def get_player_2_weapon
   puts "Player 2, unleash your weapon:"
   return gets.chomp
 end
 
 
-def alg_how_game_was_won(apple, orange)
+def how_game_was_won(apple, orange)
   if apple == "paper" && orange == "rock"
     return 1
   elsif orange == "paper" && apple == "rock"
@@ -28,7 +28,7 @@ def alg_how_game_was_won(apple, orange)
 end
 
 
-def alg_game_winner(weapon_p1, weapon_p2)
+def game_winner(weapon_p1, weapon_p2)
   if weapon_p1 == "rock" && weapon_p2 == "scissors"
     return 1
   elsif weapon_p1 == "paper" && weapon_p2 == "rock"
@@ -46,7 +46,7 @@ def alg_game_winner(weapon_p1, weapon_p2)
   end
 end  
 
-def display_how_game_won(x_ray)
+def display_how_game_won(x_ray, weapon_p1, weapon_p2)
   if x_ray == 1
     puts "Paper Covers Rock"
   elsif x_ray == 2
@@ -54,7 +54,7 @@ def display_how_game_won(x_ray)
   elsif x_ray == 3
     puts "Rock Smashes Scissors"
   else x_ray == 0
-    puts "#{p1_weapon} equals #{p2_weapon}"
+    puts "#{weapon_p1} equals #{weapon_p2}"
   end
 end
     
@@ -69,10 +69,12 @@ def display_game_result(winner)
 end
       
 
-p1_weapon = fun_get_player_1_weapon
-p2_weapon = fun_get_player_2_weapon
-how_game_won = alg_how_game_was_won(p1_weapon, p2_weapon)
-game_result = alg_game_winner(p1_weapon, p2_weapon)
-display_how_game_won(how_game_won)
+p1_weapon = get_player_1_weapon
+p2_weapon = get_player_2_weapon
+win_description = how_game_was_won(p1_weapon, p2_weapon)
+game_result = game_winner(p1_weapon, p2_weapon)
+
+display_how_game_won(win_description, p1_weapon, p2_weapon)
+
 display_game_result(game_result)
 

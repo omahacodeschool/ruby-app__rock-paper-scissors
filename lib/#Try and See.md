@@ -67,6 +67,10 @@ def display_round_winner(victory_conditions)
   end
 end
 
+#Dispalys final victor, use in OOP
+def display_final_winner
+  puts "#{victory_count.max_by{|k,v| v}[0]} is victorious!!!"
+end
 
 
 

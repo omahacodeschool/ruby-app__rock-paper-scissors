@@ -12,30 +12,38 @@ class Game
 
     @player_victory = (how_many_games + 1) / 2
   end
+      
 
-# def run_game
-#   @p1_weapon = gets.chomp.downcase
-#   @p2_weapon = gets.chomp.downcase
-#   until end_of_series do
-    
-# end   
-
-  def end_of_series
-    accumulate_series_score
+  def display_end_of_series
     if @player_1_score == @player_victory 
         puts "Congratulations #{@player_1_name}"
-        puts "You have won this match #{@player_1_score} games to #{@player_2_score}"
+        puts "You have won this match #{@player_1_score} games to #{@player_2_score}."
     elsif @player_2_score == @player_victory
         puts "Congratulations #{@player_2_name}"
-        puts "You have won this match #{@player_2_score} games to #{@player_1_score}"
-    else puts "Play on."
-  end 
+        puts "You have won this match #{@player_2_score} games to #{@player_1_score}."
+    end
+  end
+
+  def display_scoreboard
+    puts "The score is"
+    puts "#{@player_1_name}"+" #{@player_1_score}" 
+    puts "#{@player_2_name}"+" #{@player_2_score}"
+  end
+
+  def keep_playing
+    until @player_1_score == @player_victory or @player_2_score == @player_victory 
+      choose_weapons
+      accumulate_series_score(determine_winner_one_game)
+      display_scoreboard
+    end
+  end
 
   def accumulate_series_score(winner)
     if winner == 1
       return @player_1_score +=1
     elsif winner == 2
       return @player_2_score +=1
+    end
   end
 
   def how_many_games
@@ -92,10 +100,8 @@ end #this is the end of class
 
 new_game = Game.new
 new_game.setup
-new_game.choose_weapons
-result = new_game.determine_winner_one_game
-new_game.display_winner_one_game(result)
-new_game.
+new_game.keep_playing
+new_game.display_end_of_series
 
 
 # def declare_series_winner
@@ -110,110 +116,6 @@ new_game.
 
 
 
-
-#     #     #MATCH DISPENSATION
-
-    
-  
-#     # else
-#         puts "Goodbye for now."
-#     #end
-#   #end
-# end
-# end
-#     puts "\n\n"
-#     puts
-#     puts  "I grow weary of the formalities. Play on!"
-#     puts  "_______________________________________________________"
-
-
-#     #SCOREBOARD
-
-#     $player_1_score = 0
-#     $player_2_score = 0
-#     puts "SCOREBOARD"
-#     puts
-#     puts "#{$player_1_name} #{$player_1_score}"
-#     puts "#{$player_2_name} #{$player_2_score}"
-#     puts  "_______________________________________________________"
-  
-#       #GAME PLAY
-
-#     until $player_1_score == $player_victory or $player_2_score == $player_victory do
-# end
-#       #WEAPON OPTIONS
-#       rock = "r"
-#       paper = "p"
-#       scissors = "s"
-
-#       #PLAY ONE GAME
-
-#       puts "Choose your weapon. Rock (r), Paper (p) or Scissors (s)."  
-#       puts 
-#       puts "#{$player_1_name} type in your weapon here:       "
-#             $player_1_weapon = gets.chomp.downcase
-#       puts
-#       puts "#{$player_1_name} has chosen #{$player_1_weapon}"
-#       puts
-#       puts "#{$player_2_name} type in your weapon here:       "
-#             $player_2_weapon = gets.chomp.downcase
-#       puts  "#{$player_2_name} has chosen #{$player_2_weapon}"
-  
-
-
-#       #DETERMINE WINNER OF ONE GAME - MAIN VERSION
-  
-
-#       if $player_1_weapon == "r" && $player_2_weapon == "r" 
-#         puts "It's a tie. No points awarded."
-
-#       elsif $player_1_weapon == "r" && $player_2_weapon == "s"
-#         puts "Rock breaks scissors. Point to #{$player_1_name}."
-#         $player_1_score += 1
-
-#       elsif $player_1_weapon == "r" && $player_2_weapon == "p"
-#         puts "Paper covers rock. Point to #{$player_2_name}."
-#         $player_2_score += 1
-
-#       elsif $player_1_weapon == "s" && $player_2_weapon == "r"
-#         puts "Rock breaks scissors. Point to #{$player_2_name}."
-#         $player_2_score += 1
-
-#       elsif $player_1_weapon == "s" && $player_2_weapon == "s"
-#         puts "It's a tie. No points awarded."
-
-#       elsif $player_1_weapon == "s" && $player_2_weapon == "p"
-#         puts "Scissors cut paper. Point to #{$player_1_name}."
-#         $player_1_score += 1
-
-#       elsif $player_1_weapon == "p" && $player_2_weapon == "r"
-#         puts "Paper covers rock. Point to #{$player_1_name}."
-#         $player_1_score += 1
-
-#       elsif $player_1_weapon == "p" && $player_2_weapon == "s"
-#         puts "Scissors cut paper. Point to #{$player_2_name}."
-#         $player_2_score += 1
-
-#       elsif $player_1_weapon == "p" && $player_2_weapon == "p"
-#         puts "It's a tie. No points awarded."
-#       end
-#     end
-
-#         #MATCH DISPENSATION
-
-#         #ANNOUNCEMENT OF THE WINNER
-#     if  $player_1_score == $player_victory 
-#         puts 
-#         puts "Congratulations #{$player_1_name}"
-#         puts "You have won this match #{$player_1_score} games to #{$player_2_score}"
-#         puts 
-
-#     elsif $player_2_score == $player_victory
-#         puts 
-#         puts "Congratulations #{$player_2_name}"
-#         puts "You have won this match #{$player_2_score} games to #{$player_1_score}"
-#         puts 
-#     end
 
 #     #     #THIS IS NOT OVER, BUDDY!
 

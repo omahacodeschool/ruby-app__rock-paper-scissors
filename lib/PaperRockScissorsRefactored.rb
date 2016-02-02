@@ -30,7 +30,7 @@ def RPS_Rules(player1,player2,player1_score,player2_score,tie_score,game)
         (player1 == 'P') && (player2 == 'R'))
         $player1_score += 1
         $game += 1
-        print "Player 1 Wins--player1#{$player1_score}"
+        print "Player 1 Wins"
     elsif 
         ((player1 == 'R') && (player2 == 'P')||
         (player1 == 'S') && (player2 == 'R')||

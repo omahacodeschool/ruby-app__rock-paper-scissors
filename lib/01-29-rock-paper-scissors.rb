@@ -96,6 +96,11 @@ class Game
     @current_Score.values.max<@games_needed_to_win
   end
 
+  def set_game_time_test_variables(x, y)
+    @current_Score = x
+    @games_needed_to_win = y
+  end
+
   # determines whether both players have entered the same move
   #
   # no parameters

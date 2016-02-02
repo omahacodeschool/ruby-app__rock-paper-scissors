@@ -29,9 +29,7 @@ class GameTest < Minitest::Test
 
   def test_game_time?
     sample_game = Game.new
-    sample_game.game_time?
-    @current_Score = {"Player 1"=>1, "Player 2"=>1}
-    @games_needed_to_win = 3
+    sample_game.set_game_time_test_variables({"Player 1"=>1, "Player 2"=>1}, 3)
 
     assert_equal(true, sample_game.game_time?)
   end

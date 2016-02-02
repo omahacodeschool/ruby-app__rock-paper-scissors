@@ -34,7 +34,7 @@ class RockPaperScissorsTest < Minitest::Test
 
 	def test_overall_draw_true
 		sample_game =  RockPaperScissorsGame.new
-		player1 = sample_game.set_p1_name("Beth")
+		splayer1 = sample_game.set_p1_name("Beth")
 		player2 = sample_game.set_p2_name("Hal")
 		score = {player1 => 3, player2 => 3}
 

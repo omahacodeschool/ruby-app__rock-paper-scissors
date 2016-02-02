@@ -1,7 +1,10 @@
 require_relative '../lib/rps_v2.rb'
 
 class Player
-		#Get a @player's name
+	def initialize
+	end
+	
+	#Get a @player's name
 	#
 	#
 	#Returns a @player's name
@@ -23,5 +26,15 @@ class Player
 	def set_p2_name(str)
 		return @player2 = str
 	end
+
+	def name_value_1
+		@player1
+	end
+
+	def name_value_2
+		@player2
+	end
+
+	#somehow determine if computer is playing
 end
 

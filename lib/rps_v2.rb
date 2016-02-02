@@ -14,7 +14,7 @@ class RockPaperScissorsGame
 		@player1.set_p1_name(@player1.get_player_name)
 
 		if computer_game == "yes" 
-			@player2 = "Hal"
+			@player2.set_p2_name("Hal")
 
 		else
 			puts "Player two, please type your name."
@@ -29,23 +29,23 @@ class RockPaperScissorsGame
 		round_number = 0
 
 		#add this to player class .initialize?
-		score = {@player1 => 0, @player2 => 0}
+		score = {@player1.name_value_1 => 0, @player2.name_value_2 => 0}
 
 		while round_number < number_of_games
-			puts "#{@player1}" +", please type rock, paper, scissors, lizard, spock."
+			puts "#{@player1.name_value_1}" +", please type rock, paper, scissors, lizard, spock."
 			set_p1_weapon(get_player_input)
 
 			if computer_game == "yes"
 				@p2 = %w[rock paper scissors lizard spock].sample
 
 			else
-				puts "#{@player2}" +", please type rock, paper, scissors, lizard, spock."
+				puts "#{@player2.name_value_2}" +", please type rock, paper, scissors, lizard, spock."
 				set_p2_weapon(get_player_input)
 
 			end
 
 
-			puts "#{@player1}" + " chose " + "#{@p1}" + ". " + "#{@player2}" + " chose " + "#{@p2}" + "."
+			puts "#{@player1.name_value_1}" + " chose " + "#{@p1}" + ". " + "#{@player2.name_value_2}" + " chose " + "#{@p2}" + "."
 
 
 			winner = find_winner
@@ -55,12 +55,12 @@ class RockPaperScissorsGame
 			 	 	puts "It's a draw!"
 
 				elsif winner == @player1
-					score[@player1] += 1
-				 	puts "#{@player1.capitalize}" + " wins this round."
+					score[@player1.name_value_1] += 1
+				 	puts "#{@player1..name_value_1.capitalize}" + " wins this round."
 
 				elsif winner == @player2
-					score[@player2] += 1
-				  	puts "#{@player2.capitalize}" + " wins this round."
+					score[@player2.name_value_2] += 1
+				  	puts "#{@player2..name_value_2.capitalize}" + " wins this round."
 
 				end
 				puts score

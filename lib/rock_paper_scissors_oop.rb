@@ -67,12 +67,12 @@ class Game
   #num - takes an Integer as the winning result of a game of paper-rock-scissors and notifies the player of their win.
   #
   #returns a String
-  def individual_game_winner(result)
-    if result == 1
+  def individual_game_winner
+    if @result == 1
       return "\nPlayer one wins!"
-    elsif result == 2
+    elsif @result == 2
       return  "\nPlayer two wins!"
-    else result == nil
+    else @result == nil
       return "\nIt's a tie!"
     end
   end
@@ -117,15 +117,15 @@ class Game
       
       @player1_move = getting_player1_move
       @player2_move = getting_player2_move
-      prs_game(player1_move, player2_move)
-      result = prs_game(player1_move, player2_move)
-      puts individual_game_winner(result)
+      prs_game
+      @result = prs_game
+      puts individual_game_winner
       #winner_count(result, player_one_wins, player_two_wins)
-      if result == 1 
+      if @result == 1 
        player_one_wins += 1
-      elsif result == 2  
+      elsif @result == 2  
         player_two_wins += 1
-      else result == nil  
+      else @result == nil  
         games_played -= 1
       end
       
@@ -136,5 +136,5 @@ class Game
   end
 end
 
-puts run_game
+
 

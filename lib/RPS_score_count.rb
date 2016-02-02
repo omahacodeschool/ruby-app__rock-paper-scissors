@@ -1,5 +1,3 @@
-require_relative 'RPS_Main'
-
 class Score_count
 
   def initialize()
@@ -44,19 +42,19 @@ class Score_count
   end
 
   def set_determine_set_winner()
-     if @score_count > @other_score_count
-      @set_winner = 1
+    if @score_count > @other_score_count
+          @set_winner = 1
 
-      elsif @score_count < @other_score_count
-           @set_winner = 2
+    elsif @score_count < @other_score_count
+          @set_winner = 2
             
-      else @score_count == @other_score_count
-           @set_winner = 0
-      end
+    else @score_count == @other_score_count
+          @set_winner = 0
+    end
   end
 
   def get_determine_set_winner()
-    return @set_winner
+   return @set_winner
   end
 
 end

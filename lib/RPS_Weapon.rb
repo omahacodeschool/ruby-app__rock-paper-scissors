@@ -1,5 +1,3 @@
-require_relative 'RPS_Main'
-
 class Weapon
 
   def initialize()

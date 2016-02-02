@@ -1,12 +1,10 @@
-puts "How many games of RPS must be won in order to declare a winner?"
-games_reqd = gets.chomp.to_i
+puts "Would you like to play best of 3, 5, 7...? (Pick an odd number)"
+games_requested = gets.chomp.to_i
 
-games_remaining = 0
 p1_wins = 0
 p2_wins = 0
 
-while games_remaining < games_reqd
-games_remaining = games_remaining += 1
+until p1_wins or p2_wins > games_requested / 2 
   
   puts "Player 1: rock, paper or scissors?"
   p1_move = gets.chomp.downcase
@@ -26,16 +24,14 @@ games_remaining = games_remaining += 1
     p1_wins += 1
   elsif (p1_move == "scissors" && p2_move == "rock")
     p2_wins += 1
-  else 
+  else #tie scenario
     p1_wins += 0
     p2_wins += 0
-    games_remaining += 0
   end
 end
 
-if p1_wins > p2_wins
+if p1_wins > games_requested / 2 
   puts "Players 1 wins!"
-else
+elsif p2_wins > games_requested / 2 
   puts "Player 2 wins!"
-  #elsif tie scenario
 end

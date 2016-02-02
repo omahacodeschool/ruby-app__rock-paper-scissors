@@ -4,7 +4,7 @@ games_requested = gets.chomp.to_i
 p1_wins = 0
 p2_wins = 0
 
-until p1_wins or p2_wins > games_requested / 2 
+until p1_wins > games_requested / 2 || p2_wins > games_requested / 2
   
   puts "Player 1: rock, paper or scissors?"
   p1_move = gets.chomp.downcase

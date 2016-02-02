@@ -9,23 +9,29 @@ class Game
     @player2 = player2_name
 
     ask_for_games
-
     @games = games_until_victory
-    puts_ask_for_weapon1
-    set_player1_weapon(get_player1_weapon)
-    puts_ask_for_weapon2
-    set_player2_weapon(get_player2_weapon)
-
     @current_score = {@player1 => 0, @player2 => 0}
 
-    determine_victor(victory_conditions)
+    until @current_score.has_value?(@games)
+ 
+      puts_ask_for_weapon1
+      set_player1_weapon(get_player1_weapon)
+      puts_ask_for_weapon2
+      set_player2_weapon(get_player2_weapon)
 
-    incremeant_score
-    puts @current_score
+      determine_victor(victory_conditions)
 
-    puts_match_winner
+      increment_score
 
-    puts_champion
+      if @game_winner == nil
+        puts_tie_game
+      else
+        puts_match_winner
+      end
+      show_score
+    end
+
+      puts_champion
   end
 
   #Gets player1's name
@@ -125,13 +131,12 @@ class Game
 
   #Returns String of winning player's name, or nil.
   def determine_victor(x)
-    x = victory_conditions
     if x == 1
-      @match_winner = @player1
+      @game_winner = @player1
     elsif x == 2
-      @match_winner = @player2
+      @game_winner = @player2
     else
-      @match_winner = nil
+      @game_winner = nil
     end
   end
 
@@ -141,14 +146,18 @@ class Game
   #Player1 wins a match.  Then @current_score{@player1 => 1, @player2 => 0}
 
   #Return new @current_score hash. (NOTE: this is where I'm having trouble)
-  def incremeant_score
-    until @current_score.has_value?(@games) 
-      if @match_winner != nil
-        @current_score["#{@match_winner}"] += 1
-      else
-      end
+  def increment_score
+    if @game_winner != nil
+      @current_score["#{@game_winner}"] += 1
+    else
     end
   end
+
+  def show_score
+    @current_score.each{|key,value| puts "#{key} has won #{value} games so far."}
+  end
+
+
 
 
 
@@ -159,7 +168,7 @@ class Game
   end
   #Puts winner of the match.  
   def puts_match_winner
-    puts "#{@match_winner} wins this round!"
+    puts "#{@game_winner} wins this round!"
   end
   #Puts winner at the end of the game.  
   def puts_champion

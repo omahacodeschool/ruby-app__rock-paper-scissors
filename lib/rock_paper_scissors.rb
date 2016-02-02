@@ -11,8 +11,9 @@ class Game
     ask_for_games
 
     @games = games_until_victory
-
+    puts_ask_for_weapon1
     set_player1_weapon(get_player1_weapon)
+    puts_ask_for_weapon2
     set_player2_weapon(get_player2_weapon)
 
     @current_score = {@player1 => 0, @player2 => 0}
@@ -20,6 +21,7 @@ class Game
     determine_victor(victory_conditions)
 
     incremeant_score
+    puts @current_score
 
     puts_match_winner
 
@@ -81,8 +83,8 @@ class Game
     @weapon_1 = x
   end
 
-  def set_player2_weapon(x)
-    @weapon_2 = x
+  def set_player2_weapon(y)
+    @weapon_2 = y
   end
 
 
@@ -117,7 +119,11 @@ class Game
     end
   end
 
-  #Returns the winning player's name as a String.
+  #Returns the winning player's name.
+
+  #x - is the results (1, 2, or nil) of victory_conditions method
+
+  #Returns String of winning player's name, or nil.
   def determine_victor(x)
     x = victory_conditions
     if x == 1
@@ -129,7 +135,12 @@ class Game
     end
   end
 
-  # Should return the name of the winning player
+  #Meant to increase the winning players score by 1
+
+  #Example: @current_score{@player1 =>0, @player2 => 0}
+  #Player1 wins a match.  Then @current_score{@player1 => 1, @player2 => 0}
+
+  #Return new @current_score hash. (NOTE: this is where I'm having trouble)
   def incremeant_score
     until @current_score.has_value?(@games) 
       if @match_winner != nil
@@ -142,25 +153,33 @@ class Game
 
 
 
-  #Just puts that there is a tie  
+  #Puts that there is a tie.  
   def puts_tie_game
     puts "No winner! Play again!"
   end
-
+  #Puts winner of the match.  
   def puts_match_winner
     puts "#{@match_winner} wins this round!"
   end
-
+  #Puts winner at the end of the game.  
   def puts_champion
     puts "#{@current_score.max_by{|k,v| v}[0]} is victorious!!!"
   end
-
+  #Puts the name of the game, symbolise the start of the game.  
   def puts_name_of_game
     puts "ROCK PAPER SCISSORS!!!!"
   end
-
+  #Asks the players for the number of games they want to play.  
   def ask_for_games
     puts "How many games till victory?"
+  end
+  #Asks player1 for thier weapon of choice.  
+  def puts_ask_for_weapon1
+    puts "#{@player1}, chose your weapon"
+  end
+  #Asks player2 for thier weapon of choice. 
+  def puts_ask_for_weapon2
+    puts "#{@player2}, chose your weapon"
   end
 end
 

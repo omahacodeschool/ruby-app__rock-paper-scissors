@@ -53,7 +53,7 @@ class Game
     return @player_1_move
   end
 
-  def set_player_1 (x)
+  def set_player_1(x)
     @player_1_move = x
   end
 
@@ -73,7 +73,7 @@ class Game
     return @player_2_move
   end
 
-  def set_player_2 (x)
+  def set_player_2(x)
     @player_2_move = x
   end
 

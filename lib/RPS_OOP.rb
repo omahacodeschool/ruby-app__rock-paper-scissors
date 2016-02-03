@@ -15,5 +15,3 @@ game_winner = new_game.game_winner
 puts "And the winner is.....#{game_winner}! Congratulations, #{game_winner}!"
 
 ################ PROGRAM END #################
-
-

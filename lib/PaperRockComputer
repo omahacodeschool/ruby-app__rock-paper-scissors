@@ -5,6 +5,7 @@ class Game
 #the course of the game, all are set to the number value of '0'
 #
     def refresher
+        rps = ['R','P','S']
         @player1_score = 0
         @player2_score = 0
         @computer_score = 0
@@ -20,6 +21,10 @@ class Game
         puts "Welcome to Paper, Rock, Scissors, press '1' for a one player game against the computer, or press '2' for a two player game."
         return gets.chomp.downcase
     end
+
+    def computer
+        puts "Alright, good luch against the computer!"
+        computer = rps.sample(1)
         
     def intro
         puts "How many games of ROCK, PAPER, SCISSORS would you like to Play?"
@@ -187,21 +192,31 @@ class Game
 #called to display in a string to announce the winner of the game.
 #
     def game_runner
+            choice = qualifier
             @best_of = intro
-        until @game == @best_of do
-            computer = qualifier
-            player1 = player_setup1
-            player2 = player_setup2
-            rps_rules(player1,player2)
-            match_announce
-            @game += 1
-            @match == 0  
-        end
+            if choice = '1'
+                until @game == @best_of do
+                    player1 = player_setup1
+                    rps_rules (player1,player2)
+                    match_announce
+                    @game += 1
+                    @match == 0
+                end
+            else
+                until @game == @best_of do
+                    player1 = player_setup1
+                    player2 = player_setup2
+                    rps_rules(player1,player2)
+                    match_announce
+                    @game += 1
+                    @match == 0  
+                end
     final_output
     end
 end
 
 x = Game.new
+x.
 x.refresher
 x.game_runner
 

@@ -13,21 +13,14 @@ class Game
         @x = 0
     end
 #
-#Here the number of games played is set with the input of the user, the best_of
-#variable is set to track the game
+#intro displays a string and inputs an integer
 #
-    def qualifier
-        puts "Welcome to Paper, Rock, Scissors, press '1' for a one player game against the computer, or press '2' for a two player game."
-        return gets.chomp.downcase
-    end
-        
     def intro
         puts "How many games of ROCK, PAPER, SCISSORS would you like to Play?"
         return gets.chomp.to_i
     end
 #
-#player_setup1 stores the first players input and defines the variable 
-#'player1' as the players 'move' as a string, either R,P or S
+#player_setup1 displays a string and inputs a string to be player1
 #
     def player_setup1
         puts "\nPlayer 1 please enter your move then pass the keyboard to your 
@@ -35,8 +28,7 @@ class Game
         return gets.chomp.upcase
     end
 #
-#player_setup2 stores the second players input and defines the variable 
-#'player2' as that players 'move' in a string, either R,P,or S
+#player_setup2 displays a string and inputs a string to be player2
 #
     def player_setup2
         system "clear"
@@ -48,13 +40,9 @@ class Game
 #rps is the algorithmic engine that governs the game, it takes the string 
 #stored in 'player1' and 'player2' and evaluates them vs each other. 
 #
-#depending on what those strings are, the variables @player1_score and  
-#@player2_score are increased to keep track of how many individual matches
+#@mach is set to a string value, and @player1_score/@player2_score values are
+#increased.
 #
-#are being won by which player, and the variable @match is set as either
-#the string 'player1' if that player wins, 'player2' if that player wins
-#
-#or 'tie' if both players choose the same option.
 #Example: player1 = 'R' and player2 = 'S'       
 #        @player1_score + 1
 #        match => player1
@@ -102,9 +90,7 @@ class Game
         end      
     end
 #
-#match_announce takes the @match defined in rps_rules and based on its
-#string content and displays the winner of each round or match in
-#a string
+#match_announce takes the @match string and displays a string
 #
 #Example: @match == "player1"
 #        => "Player 1 Wins Match"
@@ -125,30 +111,12 @@ class Game
         end 
     end
 #
-#final_output evaluates the number defined in the variables
-#@player1_score and @player2_score to determine the overall winner
-#of the game
-#
-#final_output takes the variable @tie_score defined in 'intro'
-#to determine when the players have won and displays a string
-#
-#telling users who won
+#final_output retrieves the integer value from @player1_score and 
+#@player2_score, evaluates them and outputs a string
 #
 #Example: player1_score > player2_score
 #        => "Player 1 Wins Game!! Winning (their score) ouf of
 #        (total games played)"
-#
-#if players have the number of match wins store in @player1_score and
-#@player2_score, or the variables have an equal value with a value in
-#
-#the @tie_score variable, the game is determined a tie, and that message
-#is given to the users
-#
-#Example:  @player1_score = @player2_score and @tie_score > 0
-#         => "Its a tie Game!!  Player 1 won (@player1_score) out of (
-#         @best_of), Player 2 won (@player2_score) out of (@best_of), both 
-#         Players tied for a total of (@tie_score) times!! What an even match 
-#         we have here!!"
 #
     def final_output
         case
@@ -175,21 +143,10 @@ class Game
 #keeps track of how many times the game has been looped and game_runner
 #stops the loop when these values are the same.
 #
-#player1 and player2 which are defined from user input in the player1_setup
-#and player2_setup methods are defined here for evaluation in rps_rules
-#
-#match announce is triggered to announce the match winner, before the
-#@game variable increased, and the @match variable is reset to be
-#
-#redefined by the rps_rules method in the next instatiation of the loop.
-#then when the loop has met its conditions the final_output method is
-#
-#called to display in a string to announce the winner of the game.
-#
+
     def game_runner
             @best_of = intro
         until @game == @best_of do
-            computer = qualifier
             player1 = player_setup1
             player2 = player_setup2
             rps_rules(player1,player2)
@@ -200,14 +157,3 @@ class Game
     final_output
     end
 end
-
-x = Game.new
-x.refresher
-x.game_runner
-
-
-
-    
-
-
-

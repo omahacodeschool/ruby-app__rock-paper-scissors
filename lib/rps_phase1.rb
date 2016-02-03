@@ -1,15 +1,15 @@
 puts "Would you like to play best of 3, 5, 7...? (Pick an odd number)"
-games_requested = gets.chomp.to_i
+num_games_chosen = gets.chomp.to_i
 
 p1_wins = 0
 p2_wins = 0
 
-until p1_wins > games_requested / 2 || p2_wins > games_requested / 2
+until p1_wins > num_games_chosen / 2 || p2_wins > num_games_chosen / 2
   
-  puts "Player 1: rock, paper or scissors?"
+  puts "\nPlayer 1: rock, paper or scissors?"
   p1_move = gets.chomp.downcase
 
-  puts "Player 2: rock, paper or scissors?"
+  puts "\nPlayer 2: rock, paper or scissors?"
   p2_move = gets.chomp.downcase
 
   if (p1_move == "rock" && p2_move == "scissors")
@@ -30,8 +30,8 @@ until p1_wins > games_requested / 2 || p2_wins > games_requested / 2
   end
 end
 
-if p1_wins > games_requested / 2 
-  puts "Players 1 wins!"
-elsif p2_wins > games_requested / 2 
-  puts "Player 2 wins!"
+if p1_wins > num_games_chosen / 2 
+  puts "\nPlayer 1 wins!"
+elsif p2_wins > num_games_chosen / 2 
+  puts "\nPlayer 2 wins!"
 end

@@ -30,15 +30,3 @@ class RockPaperScissorsTests < Minitest::Test
   end
 
 end  
-
-# def display_how_game_won(won, weapon_p1, weapon_p2)
-#   if won == 1
-#     return "Paper Covers Rock"
-#   elsif won == 2
-#     return "Scissors Cut Paper"
-#   elsif won == 3
-#     return "Rock Smashes Scissors"
-#   else won == 0
-#     return "#{weapon_p1} equals #{weapon_p2}"
-#   end
-# end

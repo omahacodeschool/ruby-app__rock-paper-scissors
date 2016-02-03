@@ -3,7 +3,10 @@ class Game
 
 # Purpose: Initialize variables needed to play the game.
 #
-# Inputs
+# Inputs: 
+# @player_1_score = an Integer that increases by 1 when player wins 1 game in the series.
+# @player_2_score = an Integer that increases by 1 when player wins 1 game in the series.
+#
   def setup
 
     player_names
@@ -23,8 +26,7 @@ class Game
 # @player_2_score = an Integer that increases by 1 when player wins 1 game in the series.
 # @player_victory = an Integer indicating the number of games a player must win to win the series.
 #
-# returns text to indicate who won the series and the final scoare.
-
+# returns text to display who won the series and the final score.
   def display_end_of_series
     if @player_1_score == @player_victory 
         puts "Congratulations #{@player_1_name}"
@@ -39,10 +41,8 @@ class Game
 #
 # Inputs: @player_1_name = a String typed in by Player 1.
 #         @player_2_name = a String typed in by Player 2.
-#         @player_1_score = an Integer that increases by 1 when Player 1 wins.
-#         @player_2_score = an Integer that increases by 1 when Player 2 wins game.
-#
-# Example: 
+#         @player_1_score = an Integer that increases by 1 when Player 1 wins game in the series.
+#         @player_2_score = an Integer that increases by 1 when Player 2 wins game in the series.
 #
 # Returns players' names and their current score after each game in the series.
   def display_scoreboard
@@ -61,7 +61,9 @@ class Game
 # choose_weapons = A Method that returns the players' weapons choices.
 # display_winner_one_game = a Method that returns the name of the winner of the game just completed, followed by "wins." Accepts the Method determine_winner_one_game as its argument.
 # accumulate_series_score = A Method that returns 1 if Player 1 wins and 2 if Player 2 wins.
-# display_scoreboard = A Method that returns the current series score. 
+# display_scoreboard = A Method that returns the current series score.
+#
+# Returns the player who wins the series and the final score. 
   def keep_playing
     until @player_1_score == @player_victory or @player_2_score == @player_victory 
       choose_weapons
@@ -82,7 +84,9 @@ class Game
 #Purpose: Set the number of games one player must win to win the series.
 #
 #Inputs: match_duration = A String converted to an Integer by the method. It 
-#is the maximum number of games that could be played to determine the series #winner.
+#is the maximum number of games that could be played to determine the series #winner. It is typed in by a player.
+#
+#Returns the String typed in by the player, converted to an Integer.
   def how_many_games
     puts "Please enter 1, 3, 5, or 7 to choose how many games you want to play."
     match_duration = gets.chomp.to_i

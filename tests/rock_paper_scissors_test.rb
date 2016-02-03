@@ -1,30 +1,27 @@
 require 'test_helper'
 require 'rock_paper_scissors'
 
-# class RockPaperScissorsTest < Minitest::Test
-#   def test player_1_wins
-#      = "rock"
-#     assert_equal("rock", player_1_wins(player_1))
-#   end
+class RockPaperScissorsTest < Minitest::Test
+  def test_determine_winner_one_game_1
+    sample_game = "Game.new"
+    sample_game.set_p1_weapon("s")
+    sample_game.set_p2_weapon("p")
+    assert_equal(1, sample_game.determine_winner_one_game)
+  end
 
-#   def test_player_2_wins
-#     phone_num = "1 23 123  55 5 5"
-#     assert_equal("(123) 123-5555", format_phone_number(phone_num))
-#   end
+  def test_determine_winner_one_game_2
+    sample_game = "Game.new"
+    sample_game.set_p1_weapon("r")
+    sample_game.set_p2_weapon("p")
+    assert_equal(2, sample_game.determine_winner_one_game)
+  end
 
-#   def test_dashed_format
-#     phone_num = "123-123-5555"
-#     assert_equal("(123) 123-5555", format_phone_number(phone_num))
-#   end
+  def test_how_many_games
+    sample_game = "Game.new"
+    sample_game.set_match_duration("5")
+    assert_equal(3, sample_game.how_many_games)
+  end
 
-#   def test_dotted_format
-#     phone_num = "123.123.5555"
-#     assert_equal("(123) 123-5555", format_phone_number(phone_num))
-#   end
+  
+end #(end of class)
 
-#   def test_with_space_and_dash
-#     phone_num = "123 123-5555"
-#     assert_equal("(123) 123-5555", format_phone_number(phone_num))
-#   end
-
-# 

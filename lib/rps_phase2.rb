@@ -1,23 +1,23 @@
 def ask_for_odd_num_games
   puts "Would you like to play best of 3, 5, 7...? (Pick an odd number)"
   gets.chomp.to_i 
-end
+end 
 
 def variables
   $p1_wins = 0
   $p2_wins = 0
   $num_of_games_chosen = ask_for_odd_num_games
-end
+end 
 
 def p1_choose_weapon
   puts "\nPlayer 1: rock, paper or scissors?" 
   gets.chomp.downcase
-end
+end 
 
 def p2_choose_weapon
   puts "\nPlayer 2: rock, paper or scissors?" 
   gets.chomp.downcase
-end
+end 
 
 def playing_rps
   if ($p1_move == "rock" && $p2_move == "scissors")
@@ -36,7 +36,7 @@ def playing_rps
     $p1_wins += 0
     $p2_wins += 0
   end
-end
+end 
 
 def loop_thru_game
   until $p1_wins > ($num_of_games_chosen / 2) || $p2_wins > ($num_of_games_chosen / 2)
@@ -47,7 +47,7 @@ def loop_thru_game
     playing_rps 
   end
   match_winner
-end
+end 
 
 def match_winner
   if $p1_wins > $num_of_games_chosen / 2 
@@ -55,12 +55,8 @@ def match_winner
   elsif $p2_wins > $num_of_games_chosen / 2 
     puts "\nPlayer 2 wins!"
   end 
-end
+end 
 
 variables
 loop_thru_game
-
-
-
-
 

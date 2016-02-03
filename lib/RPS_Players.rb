@@ -156,11 +156,25 @@
       @weapon == @other_weapon 
       @battle_result = 0
     end
-end
+  end
 
 # RETURN Integer value of Instance Variable @battle_result (Determines which player won an RPS match)
-def get_battle()
+  def get_battle()
     return @battle_result
-end
+  end
+
+## METHODS FOR TESTS ##
+
+  def set_weapon_for_tests(weapon)
+    @weapon = weapon
+  end
+
+  def set_other_weapon_for_tests(other_weapon)
+    @other_weapon = other_weapon
+  end
+
+  def set_battle_result_for_tests(num)
+      @battle_result = 0
+  end
 
 end

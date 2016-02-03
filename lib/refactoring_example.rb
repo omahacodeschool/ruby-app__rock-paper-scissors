@@ -1,10 +1,10 @@
 def ask_for_p1_move
-    puts "Player 1: rock, paper or scissors?"
-    return gets.chomp.downcase
+    puts "Player 1: Rock, Paper or Scissors?"
+    return gets.chomp.downcase #explicit return optional
 end
 
 def ask_for_p2_move
-    puts "Player 2: rock, paper or scissors?"
+    puts "Player 2: Rock, Paper or Scissors?"
     return gets.chomp.downcase
 end
 

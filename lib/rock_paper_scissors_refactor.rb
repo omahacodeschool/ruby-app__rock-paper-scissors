@@ -74,9 +74,9 @@ end
 #returns an Integer increasing the w
 #def winner_count(result, player_one_wins, player_two_wins, games_played)
 #  if result == 1 
-#    player_one_wins += 1
+#    return player_one_wins += 1
 #  elsif result == 2  
-#    player_two_wins += 1
+#    replayer_two_wins += 1
 #  else result == nil  
 #    games_played -= 1
 #  end

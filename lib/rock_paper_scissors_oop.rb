@@ -1,12 +1,3 @@
- #- player one move
- #- player two move 
- #- games won
- #- games to play
-
- #asks for players moves
- #games won will change
- #games played will change
-
 class Game
   #Gets the amount of games the player would like to play.
   #
@@ -38,6 +29,10 @@ class Game
     gets.chomp.downcase
   end
 
+  def set_games_to_play(x)
+    @games_to_play = x
+  end
+
   def set_player1_move(x)
     @player1_move = x
   end
@@ -61,6 +56,19 @@ class Game
   def set_games_played(x) 
     @games_played = x
   end
+
+  def game_loop
+    while @games_played < @games_to_play
+      set_player1_move(getting_player1_move)
+      set_player2_move(getting_player2_move)
+      prs_game
+      @result = prs_game
+      puts individual_game_winner
+      winner_count
+      @games_played += 1
+    end
+  end
+
   #Plays a game of rock-paper-scissors.
   #
   #str, str - compares two Strings to determine a winner of a game of paper-rock-scissors
@@ -127,25 +135,14 @@ class Game
     end 
   end 
 
-  #should I tomdoc this?
+  
+  #should I Tomdoc this?
   def run_game
-    games_to_play = amount_of_games_to_play
+    set_games_to_play(amount_of_games_to_play)
     @player_one_wins = 0
     @player_two_wins = 0
     @games_played = 0
-
-    
-    while @games_played < games_to_play 
-      
-      set_player1_move(getting_player1_move)
-      set_player2_move(getting_player2_move)
-      prs_game
-      @result = prs_game
-      puts individual_game_winner
-      winner_count
-      @games_played += 1
-    end
-    
+    game_loop
     puts set_results_winner
   end
 end

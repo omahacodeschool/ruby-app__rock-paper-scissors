@@ -1,25 +1,20 @@
 class Game
-  @p1_wins = 0
-  @p2_wins = 0
-  
+
+  # Defines the set counters to track sets
+  def setup
+    @p1_wins = 0
+    @p2_wins = 0
+  end
+
+
   # Defines the number of sets to be in a match
   #
   # User entered integer
   #
-  # Returns integer
+  # Returns integer and calls it @match
   def get_number_sets
     puts "Enter the number of sets you would like to play"
     @match = gets.chomp.to_i
-  end
-
-  # Defines Player 1's weapon
-  #
-  # User entered
-  #
-  # Returns lowercase string
-  def get_p1_weapon
-    puts "Choose your weapon, Player 1"
-    gets.chomp.downcase
   end
 
 
@@ -30,6 +25,15 @@ class Game
   def p1_misspelled_weapon
     (@player_1_weapon == "paper") || (@player_1_weapon == "rock") || (@player_1_weapon == "scissors")
   end
+
+  # Defines when weapon is misspelled by player 2
+  #
+  # @player_1_weapon, @player_2_weapon - A string of anything other than "rock","paper", or "scissors"
+  # Returns True or False
+  def p2_misspelled_weapon
+    (@player_2_weapon == "paper") || (@player_2_weapon == "rock") || (@player_2_weapon == "scissors")
+  end
+
 
   # Defines misspelled word as new word
   #
@@ -48,41 +52,23 @@ class Game
   #
   # return string
   def weapon_for_player_1
-    @player_1_weapon = get_p1_weapon
+    puts "Choose your weapon, Player 1"
+    @player_1_weapon = gets.chomp.downcase
 
       until p1_misspelled_weapon
         @player_1_weapon = respell_weapon_text
       end
   end
 
-
-  # Defines Player 2's weapon
-  #
-  # User entered
-  #
-  # Returns lowercase string
-  def get_p2_weapon
-    puts "Choose your weapon, Player 2"
-    gets.chomp.downcase
-  end
-
-
-  # Defines when weapon is misspelled by player 2
-  #
-  # @player_1_weapon, @player_2_weapon - A string of anything other than "rock","paper", or "scissors"
-  # Returns True or False
-  def p2_misspelled_weapon
-    (@player_2_weapon == "paper") || (@player_2_weapon == "rock") || (@player_2_weapon == "scissors")
-  end
-
-
+  
   # Combines methods to define player 1's weapon and make sure its spelled correctly
   #
   # user entry
   #
   # return string
   def weapon_for_player_2
-    @player_2_weapon = get_p2_weapon
+    puts "Choose your weapon, Player 2"
+    @player_2_weapon = gets.chomp.downcase
 
       until p2_misspelled_weapon
         @player_2_weapon = respell_weapon_text
@@ -95,8 +81,8 @@ class Game
   # player 1 wins + player 2 wins
   #
   # returns integer
-  def sets_played
-    @p1_wins + @p2_wins
+  def game_in_progress
+    @p1_wins + @p2_wins != @match
   end 
 
 
@@ -126,22 +112,18 @@ class Game
   end
 
 
-  # Displays Player 1 set win text
-  def display_player_1_wins
-    puts "Player 1 Wins!!!"
-  end
-
-
-  # Defines set counter increase by 1 after a win
+  # Defines set counter increase by 1 after a point is scored. Displays win.
   #
   #Player 1's number of set wins
   #
   #returns integer
-  def p1_increase_set_counter
+  def give_p1_point
+    puts "Player 1 Wins!!!"
     @p1_wins += 1
   end
 
 
+  
   # Defines a win by Player 1 with scissors weapon
   #
   # @player_1_weapon, @player_2_weapon - A string of either "rock","paper", or "scissors"
@@ -162,18 +144,13 @@ class Game
   end
 
 
-  # Displays Player 2 set win text
-  def display_player_2_wins
-    puts "Player 2 Wins!!!"
-  end
-
-
-  # Defines set counter increase by 1 after a win
+  # Defines set counter increase by 1 after a point is scored. Displays win.
   #
   #Player 2's number of set wins
   #
   #returns integer
-  def p2_increase_set_counter
+  def give_p2_point
+    puts "Player 2 Wins!!!"
     @p2_wins += 1
   end
 
@@ -184,7 +161,7 @@ class Game
   #
   #Puts current score
   def score_update
-    puts "Score Update Method is running. The score is Player 1 with #{@p1_wins} points to Player 2 with #{@p2_wins} points"
+    puts "The score is Player 1 with #{@p1_wins} points to Player 2 with #{@p2_wins} points"
   end
 
 
@@ -194,28 +171,29 @@ class Game
   #
   # puts string
   def play_game
-    while sets_played != @match
-      if tie_set 
-        tie_set_text
+    while game_in_progress #while set num is not equal to set counters combined
 
-      elsif player_1_wins_with_paper
-        display_player_1_wins
-        p1_increase_set_counter
-        
-      elsif player_1_wins_with_scissors
-        display_player_1_wins
-        p1_increase_set_counter
-        
-      elsif player_1_wins_with_rock
-        display_player_1_wins
-        p1_increase_set_counter
-        
-      else
-        display_player_2_wins
-        p2_increase_set_counter
-      end
-    score_update
-    end
+        weapon_for_player_1 #ask for player 1's weapon and spell check
+        weapon_for_player_2 #ask for player 2's weapon and spell check
+
+          if tie_set 
+            tie_set_text
+
+          elsif player_1_wins_with_paper
+            give_p1_point
+
+          elsif player_1_wins_with_scissors
+            give_p1_point
+
+          elsif player_1_wins_with_rock
+            give_p1_point
+
+          else
+            give_p2_point
+          end
+
+        score_update
+      end  
   end
 
 
@@ -260,11 +238,13 @@ class Game
 
   # Displays winning match player text
   def match_winner_text
-    puts player_with_highest_score.join.upcase + "WINS, MATCH WINNER TEXT IS RUNNING!"
+    puts player_with_highest_score.join.upcase + "WINS,!!!"
   end
 
 
-  #display the match winner
+  # Defines if a match is tied or not and displays winner
+  #
+  # Returns string
   def who_won
     if tie_match
       tie_match_text

@@ -1,8 +1,4 @@
 
-
-
-
-
 class Game
 
 # Purpose: Initialize variables needed to play the game.

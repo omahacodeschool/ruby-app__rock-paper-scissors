@@ -13,8 +13,11 @@ class Game
   def variables
     @p1_wins = 0
     @p2_wins = 0
-    @num_of_games_chosen = ask_for_odd_num_games
   end 
+
+  def set_num_of_games
+    @num_of_games_chosen = ask_for_odd_num_games
+  end
 
 # method p1_choose_weapon gets rock, paper or scissors from player 1 in the command line interface
 #
@@ -71,13 +74,21 @@ class Game
     until @p1_wins > (@num_of_games_chosen / 2) || @p2_wins > (@num_of_games_chosen / 2)
     # the above would be replaced with game_threshold_met, if we were to refactor it further
 
-      @p1_move = p1_choose_weapon
-      @p2_move = p2_choose_weapon
+      set_p1_move(p1_choose_weapon)
+      set_p2_move(p2_choose_weapon)
 
       playing_rps 
     end
     match_winner
   end 
+
+  def set_p1_move(user_response) # user_response is a string
+    @p1_move = user_response
+  end
+
+  def set_p2_move(user_response) # user_response is a string
+    @p2_move = user_response
+  end
 
 # method match_winner returns winning message to player who first wins > 50% of user-determined # of games 
 #

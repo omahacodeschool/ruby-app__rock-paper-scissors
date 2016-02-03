@@ -44,9 +44,20 @@ class Game
     @win_number = number_needed_to_win_set
     @player_1_name = meet_player_1
     @player_2_name = meet_player_2
-    @player_1_score = 0
-    @player_2_score = 0
+    set_player_1_score(0)
+    set_player_2_score(0)
     @set_number = 0
+  end
+
+  # Created the two below so I could define an input for the add_win_to_score test
+  # to run
+
+  def set_player_1_score(x)
+    @player_1_score = x
+  end
+
+  def set_player_2_score(x)
+    @player_2_score = x
   end
 
   # Ask for Player 1's weapon

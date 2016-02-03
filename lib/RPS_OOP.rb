@@ -8,7 +8,7 @@ new_game = Game.new
 
 new_game.set_up_game
 
-new_game.run_game
+puts new_game.run_game
 
 game_winner = new_game.game_winner
 

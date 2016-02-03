@@ -46,6 +46,21 @@ class Game
     @player2_move = x
   end
 
+  def set_result(x)
+    @result = x
+  end
+
+  def set_player_one_wins(x)
+    @player_one_wins = x
+  end
+
+  def set_palyer_two_wins(x)
+    @player_two_wins = x
+  end
+
+  def set_games_played(x) 
+    @games_played = x
+  end
   #Plays a game of rock-paper-scissors.
   #
   #str, str - compares two Strings to determine a winner of a game of paper-rock-scissors

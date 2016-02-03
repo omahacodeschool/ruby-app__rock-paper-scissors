@@ -7,20 +7,22 @@ class Game
     return gets.chomp.to_i
   end
 
-  def best_of(how_many_games)
-    best = how_many_games
+  def best_of
+    best = @games
     out_of = best + best - 1
     puts "Best #{best} out of #{out_of} it is!"
   end
 
   def get_player_one_weapon
     puts "\nPlayer 1, choose your weapon!"
-    return gets.chomp.downcase
+    @player1_weapon = gets.chomp.downcase 
+    return @player1_weapon
   end
 
   def get_player_two_weapon
     puts "\nPlayer 2, choose your weapon!"
-    return gets.chomp.downcase
+    @player2_weapon = gets.chomp.downcase
+    return @player2_weapon
   end
 
   def winner?
@@ -85,8 +87,8 @@ class Game
   end
 
   def one_round
-    @player1_weapon = get_player_one_weapon
-    @player2_weapon = get_player_two_weapon
+    @player1_weapon 
+    @player2_weapon 
     return winner?
   end
 
@@ -94,8 +96,8 @@ class Game
     @p1_wins = 0
     @p2_wins = 0
     puts "Let's play Rock-Paper-Scissors!"
-    games = how_many_games
-    best_of(games)
+    @games = how_many_games
+    best_of
 
     until @p1_wins == games || @p2_wins == games
       @winner = one_round
@@ -108,4 +110,11 @@ class Game
     display_overall_winner
   end
 
+  def set_player_1(x)
+    @player1_weapon = x
+  end
+
+  def set_player_2(x)
+    @player2_weapon = x
+  end
 end

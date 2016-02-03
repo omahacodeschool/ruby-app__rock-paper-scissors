@@ -1,58 +1,78 @@
 require 'test_helper'
-require 'rock-paper-scissors'
+require 'rps-oop'
 
 class RockPaperScissorsTest < Minitest::Test
-  def test_rock_beats_scissors_p1
-    player1_weapon = "rock"
-    player2_weapon = "scissors"
-    assert_equal( 1, winner?(player1_weapon,player2_weapon))
+  
+  def test_rock_scissors_p1
+    sample_game = Game.new
+    sample_game.set_player_1("rock")
+    sample_game.set_player_2("scissors")
+
+    assert_equal(1, sample_game.winner?)
   end
 
-  def test_scissors_beats_paper_p1
-    player1_weapon = "scissors"
-    player2_weapon = "paper"
-    assert_equal( 1, winner?(player1_weapon,player2_weapon))
+  def test_scissors_paper_p1
+    sample_game = Game.new
+    sample_game.set_player_1("scissors")
+    sample_game.set_player_2("paper")
+
+    assert_equal(1, sample_game.winner?)
   end
 
-  def test_paper_beats_rock_p1
-    player1_weapon = "paper"
-    player2_weapon = "rock"
-    assert_equal( 1, winner?(player1_weapon,player2_weapon))
-  end 
+  def test_paper_rock_p1
+    sample_game = Game.new
+    sample_game.set_player_1("paper")
+    sample_game.set_player_2("rock")
 
-  def test_rock_beats_scissors_p2
-    player2_weapon = "rock"
-    player1_weapon = "scissors"
-    assert_equal( 2, winner?(player1_weapon,player2_weapon))
+    assert_equal(1, sample_game.winner?)
   end
 
-  def test_scissors_beats_paper_p2
-    player2_weapon = "scissors"
-    player1_weapon = "paper"
-    assert_equal( 2, winner?(player1_weapon,player2_weapon))
+  def test_rock_scissors_p2
+    sample_game = Game.new
+    sample_game.set_player_2("rock")
+    sample_game.set_player_1("scissors")
+
+    assert_equal(2, sample_game.winner?)
   end
 
-  def test_paper_beats_rock_p2
-    player2_weapon = "paper"
-    player1_weapon = "rock"
-    assert_equal( 2, winner?(player1_weapon,player2_weapon))
+  def test_scissors_paper_p2
+    sample_game = Game.new
+    sample_game.set_player_2("scissors")
+    sample_game.set_player_1("paper")
+
+    assert_equal(2, sample_game.winner?)
   end
 
-  def test_rock_ties_rock
-    player2_weapon = "rock"
-    player1_weapon = "rock"
-    assert_equal( nil, winner?(player1_weapon,player2_weapon))
+  def test_paper_rock_p2
+    sample_game = Game.new
+    sample_game.set_player_2("paper")
+    sample_game.set_player_1("rock")
+
+    assert_equal(2, sample_game.winner?)
   end
 
-  def test_scissors_ties_scissors
-    player2_weapon = "scissors"
-    player1_weapon = "scissors"
-    assert_equal( nil, winner?(player1_weapon,player2_weapon))
+  def test_rock_rock_tie
+    sample_game = Game.new
+    sample_game.set_player_2("rock")
+    sample_game.set_player_1("rock")
+
+    assert_equal(nil, sample_game.winner?)
   end
 
-  def test_paper_beats_paper
-    player2_weapon = "paper"
-    player1_weapon = "paper"
-    assert_equal( nil, winner?(player1_weapon,player2_weapon))
-  end   
+  def test_scissors_scissors_tie
+    sample_game = Game.new
+    sample_game.set_player_2("scissors")
+    sample_game.set_player_1("scissors")
+
+    assert_equal(nil, sample_game.winner?)
+  end
+
+  def test_paper_paper_tie
+    sample_game = Game.new
+    sample_game.set_player_2("paper")
+    sample_game.set_player_1("paper")
+
+    assert_equal(nil, sample_game.winner?)
+  end
+
 end

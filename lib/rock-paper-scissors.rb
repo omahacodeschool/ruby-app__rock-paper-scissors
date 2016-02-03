@@ -1,6 +1,5 @@
 #This is a little Rock-Paper-Scissors game.
 
-
 #Determines how many games are needed to win a set.
 #
 #Gets the number from user input.
@@ -173,7 +172,7 @@ def track_p2_wins(winner)
 end
 
 #This plays one round of Rock-Paper-Scissors
-#
+# => 
 #player1_weapon = output of get_player_one_weapon.  Will be a string.
 #player2_weapon = output of get_player_two_weapon.  Will be a string.
 #
@@ -212,3 +211,14 @@ def main_game
 end
 
 main_game
+
+#1. Start game
+#2. Ask how many games
+#3. Single game
+#4. Decide winner
+#5. Declare winner
+#6. Multiple games
+#7. Track wins
+#8. Decide overall winner
+#9. Declare overall winner
+

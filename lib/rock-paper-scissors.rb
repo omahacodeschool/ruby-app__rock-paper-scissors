@@ -131,13 +131,13 @@ end
 #
 def display_how_game_won(won, weapon_p1, weapon_p2)
   if won == 1
-    puts "Paper Covers Rock"
+    return "Paper Covers Rock"
   elsif won == 2
-    puts "Scissors Cut Paper"
+    return "Scissors Cut Paper"
   elsif won == 3
-    puts "Rock Smashes Scissors"
+    return "Rock Smashes Scissors"
   else won == 0
-    puts "#{weapon_p1} equals #{weapon_p2}"
+    return "#{weapon_p1} equals #{weapon_p2}"
   end
 end
     
@@ -160,25 +160,25 @@ end
 #
 def display_game_result(winner)
   if winner == 1
-    puts "Player 1 wins!"
+    return "Player 1 wins!"
   elsif winner == 2
-    puts "Player 2 wins!"
+    return "Player 2 wins!"
   else
-    puts "It's a draw!"
+    return "It's a draw!"
   end
 end
       
-def rps_game(p1_weapon, p2_weapon)
+
 # For testing, tests will define weapons  
 # p1_weapon = get_player_1_weapon
 # p2_weapon = get_player_2_weapon
 
-win_description = how_game_was_won(p1_weapon, p2_weapon)
-game_result = game_winner(p1_weapon, p2_weapon)
+# win_description = how_game_was_won(p1_weapon, p2_weapon)
+# game_result = game_winner(p1_weapon, p2_weapon)
 
-display_how_game_won(win_description, p1_weapon, p2_weapon)
-display_game_result(game_result)
-end
+# display_how_game_won(win_description, p1_weapon, p2_weapon)
+# display_game_result(game_result)
+
 
 
 

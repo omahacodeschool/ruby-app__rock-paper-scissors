@@ -10,10 +10,10 @@
 #
 # Returns a String ("rock"", "paper", or "scissors")
 #
-def get_player_1_weapon
-  puts "Player 1, unleash your weapon:"
-  return gets.chomp
-end
+# def get_player_1_weapon
+#   puts "Player 1, unleash your weapon:"
+#   return gets.chomp
+# end
 
 # Get the weapon of Player 2
 #
@@ -27,10 +27,10 @@ end
 #
 # Returns a String ("rock"", "paper", or "scissors")
 #
-def get_player_2_weapon
-  puts "Player 2, unleash your weapon:"
-  return gets.chomp
-end
+# def get_player_2_weapon
+#   puts "Player 2, unleash your weapon:"
+#   return gets.chomp
+# end
 
 # Defines how the game was won
 #
@@ -168,13 +168,17 @@ def display_game_result(winner)
   end
 end
       
+def rps_game(p1_weapon, p2_weapon)
+# For testing, tests will define weapons  
+# p1_weapon = get_player_1_weapon
+# p2_weapon = get_player_2_weapon
 
-p1_weapon = get_player_1_weapon
-p2_weapon = get_player_2_weapon
 win_description = how_game_was_won(p1_weapon, p2_weapon)
 game_result = game_winner(p1_weapon, p2_weapon)
 
 display_how_game_won(win_description, p1_weapon, p2_weapon)
-
 display_game_result(game_result)
+end
+
+
 

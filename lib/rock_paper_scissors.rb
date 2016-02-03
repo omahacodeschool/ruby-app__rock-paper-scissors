@@ -90,20 +90,26 @@ end
 
 
 ############### ACTUAL PROGRAM STARTS BELOW ################################
-
+#PART OF SETUP METHOD
 # Ask how many games the players want to play
+# Make win_number global variable
 win_number = number_needed_to_win_set
 
 # Meet the players and store their names
 @player_1_name = meet_player_1
-@player_2_name = meet_player_2
+@player_2_name = meet_player_2  
 
 # Set scoreboard and set count to 0
 @player_1_score = 0
 @player_2_score = 0
 @set_number = 0
 
+#END PART OF SETUP METHOD
+
+
 # Begin playing games until one player gets enough wins to win set
+
+# SECOND METHOD IS THE LOOP
 
 until @player_1_score > win_number || @player_2_score > win_number
 
@@ -121,6 +127,8 @@ until @player_1_score > win_number || @player_2_score > win_number
 
   # Get weapon choice from player 1 and player 2
   
+  # Make weapon variables instance variables 
+
   p1_weapon = get_player_1_weapon
   p2_weapon = get_player_2_weapon
 

@@ -54,7 +54,7 @@ class Game
     @player_one_wins = x
   end
 
-  def set_palyer_two_wins(x)
+  def set_player_two_wins(x)
     @player_two_wins = x
   end
 

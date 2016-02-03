@@ -1,0 +1,18 @@
+require 'test_helper'
+require_relative '../lib/RPS_Players'
+
+class RPSScoreCountTest < Minitest::Test
+ 
+def test_set_battle()
+ testplayers = Players.new()
+ @weapon = "rock"
+ @other_weapon = "paper"
+ @battle_result = 0
+
+ testplayers.set_battle()
+ assert_equal(@battle_result = 2, testplayers.get_battle())
+end
+
+
+
+end

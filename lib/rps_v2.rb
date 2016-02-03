@@ -14,6 +14,7 @@ class RockPaperScissorsGame
 		@player1.set_p1_name(@player1.get_player_name)
 
 		if computer_game == "yes" 
+			@player2 = Player.new
 			@player2.set_p2_name("Hal")
 
 		else
@@ -56,11 +57,11 @@ class RockPaperScissorsGame
 
 				elsif winner == @player1
 					score[@player1.name_value_1] += 1
-				 	puts "#{@player1..name_value_1.capitalize}" + " wins this round."
+				 	puts "#{@player1.name_value_1.capitalize}" + " wins this round."
 
 				elsif winner == @player2
 					score[@player2.name_value_2] += 1
-				  	puts "#{@player2..name_value_2.capitalize}" + " wins this round."
+				  	puts "#{@player2.name_value_2.capitalize}" + " wins this round."
 
 				end
 				puts score
@@ -84,6 +85,7 @@ class RockPaperScissorsGame
 
 	#Get a @player's input
 	#
+	# Uses
 	#
 	#Returns a @player's input
 	def get_player_input
@@ -120,10 +122,11 @@ class RockPaperScissorsGame
 	#
 	#win_hash - Hash that contains winning combos
 	#
+	#player with the value that corresponds with the key wins
 	#returns player or nil
 	def find_winner
 		set_win_hash
-		#player with the value that corresponds with the key wins
+
 		if @win_hash[@p1].include?(@p2)
 			return @player2
 		elsif @win_hash[@p2].include?(@p1)
@@ -150,8 +153,8 @@ class RockPaperScissorsGame
 
 end
 
-x = RockPaperScissorsGame.new
-x.game_on
+# x = RockPaperScissorsGame.new
+# x.game_on
 
 
 

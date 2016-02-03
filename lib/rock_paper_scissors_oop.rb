@@ -135,13 +135,15 @@ class Game
     end 
   end 
 
-  
+  def set_instance_var
+    @player_one_wins = 0
+    @player_two_wins = 0
+    @games_played = 0 
+  end 
   #should I Tomdoc this?
   def run_game
     set_games_to_play(amount_of_games_to_play)
-    @player_one_wins = 0
-    @player_two_wins = 0
-    @games_played = 0
+    set_instance_var
     game_loop
     puts set_results_winner
   end

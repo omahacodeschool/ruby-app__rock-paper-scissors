@@ -4,11 +4,11 @@ class Game
   #plays game, declares winner, keeps track of victories
   # => a message congratulating the RPS Champion
   def run_game
-
+    setup
     v=establish_v
     @Player1 = player_names(1)
     @Player2 = player_names(2)
-    setup
+    
 
     until champion(v) != nil
       move1, move2 = ask_for_move
@@ -22,9 +22,20 @@ class Game
 
   #ALGORYTHMIC METHODS
 
+  #setup establishes variables required for the game
+  # => hash of moves/values and a victory tracker
+
   def setup
     @potential_plays = Hash["rock",1, "paper",2,"scissors",3]
     @win_counter = Hash["P1",0, "P2",0]
+  end
+
+  def player1value
+    return @Player1
+  end
+
+  def set_player1value(banana)
+    @Player1 = banana
   end
 
   #assign_play_value assigns value to a weapon

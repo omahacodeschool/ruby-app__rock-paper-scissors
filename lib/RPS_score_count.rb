@@ -70,4 +70,14 @@ class Score_count
    return @set_winner
   end
 
+## START: METHODS FOR TESTS ##
+  
+  def set_games_won_for_tests(num)
+    @score_count = num
+  end
+
+  def set_other_games_won_for_tests(num)
+     @other_score_count = num
+  end
+
 end

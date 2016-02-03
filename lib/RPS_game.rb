@@ -260,6 +260,19 @@ class Game
   def get_tie_confirmation()
     return "Both players tie with #{@player.get_weapon()}!"
   end
-## END: TEXT-BASED NOTIFICATION METHODS 
-  
+## END: TEXT-BASED NOTIFICATION METHODS
+
+## START: METHODS FOR TESTS ##
+  #
+  # RETURNS method String variable as @weapon Instance Variable for testing purposes
+  def set_weapon_for_tests(weapon)
+    @player.set_weapon_for_tests
+  end
+
+   # RETURNS method String variable as @other_weapon Instance Variable for testing purposes
+  def set_other_weapon_for_tests(weapon)
+    @player.set_other_weapon_for_tests
+  end
+  ## END: METHODS FOR TESTS ##
+
 end

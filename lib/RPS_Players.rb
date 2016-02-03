@@ -160,21 +160,19 @@
 
 # RETURN Integer value of Instance Variable @battle_result (Determines which player won an RPS match)
   def get_battle()
-    return @battle_result
+     @battle_result = set_battle()
   end
 
-## METHODS FOR TESTS ##
-
+## START: METHODS FOR TESTS ##
+  #
+  # RETURNS method String variable as @weapon Instance Variable for testing purposes
   def set_weapon_for_tests(weapon)
     @weapon = weapon
   end
 
-  def set_other_weapon_for_tests(other_weapon)
-    @other_weapon = other_weapon
+   # RETURNS method String variable as @other_weapon Instance Variable for testing purposes
+  def set_other_weapon_for_tests(weapon)
+    @other_weapon = weapon
   end
-
-  def set_battle_result_for_tests(num)
-      @battle_result = 0
-  end
-
+  ## END: METHODS FOR TESTS ##
 end

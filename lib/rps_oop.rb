@@ -8,12 +8,14 @@ class Game
     gets.chomp.to_i 
   end 
 
-# method variables defines upcoming variables used
+# method set_initial_scores sets both players' scores to zero
 
-  def variables
+  def set_initial_scores
     @p1_wins = 0
     @p2_wins = 0
   end 
+
+# method set_num_of_games equates...
 
   def set_num_of_games
     @num_of_games_chosen = ask_for_odd_num_games
@@ -43,28 +45,38 @@ class Game
 
   def playing_rps
     if (@p1_move == "rock" && @p2_move == "scissors")
-      @p1_wins += 1
+      return 1
     elsif (@p1_move == "rock" && @p2_move == "paper")
-      @p2_wins += 1
+      return 2
     elsif (@p1_move == "paper" && @p2_move == "rock")
-      @p1_wins += 1
+      return 1
     elsif (@p1_move == "paper" && @p2_move == "scissors")
-      @p2_wins += 1
+      return 2
     elsif (@p1_move == "scissors" && @p2_move == "paper")
-      @p1_wins += 1
+      return 1
     elsif (@p1_move == "scissors" && @p2_move == "rock")
+      return 2
+    elsif @p1_move == @p2_move
+      return nil
+    end
+  end 
+  
+  def wins_tally(winner) # winner is an integer, return from playing_rps
+    if winner == 1
+      @p1_wins +=1
+    elsif winner == 2
       @p2_wins += 1
     else
       @p1_wins += 0
       @p2_wins += 0
     end
-  end 
+  end
 
-  #Example of how to factor algorithmic logic out of the loop_thru_game method, in order to potentially test
-  #
-  #def game_theshold_met
-  # @p1_wins > (@num_of_games_chosen / 2) || @p2_wins > (@num_of_games_chosen / 2)
-  #end
+    # Example of how to factor algorithmic logic out of the loop_thru_game method, in order to potentially test
+    #
+    # def game_threshold_met
+    # @p1_wins > (@num_of_games_chosen / 2) || @p2_wins > (@num_of_games_chosen / 2)
+    # end
 
 # method loop_thru_game defines how a winner is determined (winning more than half of # of games chosen by user) and keeps looping loop_thru_game until p1 or p2 reaches this threshold
 #
@@ -74,17 +86,21 @@ class Game
     until @p1_wins > (@num_of_games_chosen / 2) || @p2_wins > (@num_of_games_chosen / 2)
     # the above would be replaced with game_threshold_met, if we were to refactor it further
 
-      set_p1_move(p1_choose_weapon)
+      set_p1_move(p1_choose_weapon) #setting p1 move to a string
       set_p2_move(p2_choose_weapon)
 
-      playing_rps 
+      wins_tally(playing_rps) 
     end
     match_winner
   end 
 
+# method set_p1_move.... 
+
   def set_p1_move(user_response) # user_response is a string
     @p1_move = user_response
   end
+
+# method set_p2_move.... 
 
   def set_p2_move(user_response) # user_response is a string
     @p2_move = user_response

@@ -66,14 +66,18 @@ class Game
       end
   end
 
-  # Requests string from player 1
+  # Requests weapon from player 1
+  #
+  # input string
   #
   # Returns string
   def req_weap_player_1
     gets.chomp.downcase
   end
 
-  # Requests string from player 2
+  # Requests weapon from player 2
+  #
+  # input string
   #
   # Returns string
   def req_weap_player_2
@@ -162,7 +166,6 @@ class Game
     @p1_wins += 1
   end
 
-
   
   # Defines a win by Player 1 with scissors weapon
   #
@@ -205,11 +208,11 @@ class Game
   end
 
 
-  # play the game
+  # Plays the game
   #
-  # compare weapons and display updated score
+  # Compare weapons and display updated score
   #
-  # puts string
+  # Puts string
   def play_game
     while game_in_progress #while set num is not equal to set counters combined
 
@@ -235,7 +238,6 @@ class Game
         score_update
       end  
   end
-
 
 
   # Defines a tied match
@@ -294,20 +296,6 @@ class Game
     end
   end
 
-
-
-
-
-
-
-
-
-  #
-  #
-  #
-  #
-  #
-  #
 
 
 

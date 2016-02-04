@@ -1,3 +1,4 @@
+
 require 'test_helper'
 require 'game_methods'
 
@@ -18,7 +19,7 @@ class RPSTest < Minitest::Test
     sample_game = Game.new
     sample_game.set_weap_player_1("scissors")
     sample_game.set_weap_player_2("paper")
-    assert_equal(true, sample_game.layer_1_wins_with_scissors)
+    assert_equal(true, sample_game.player_1_wins_with_scissors)
   end
 
   def p1_rock_wins

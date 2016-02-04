@@ -2,7 +2,7 @@ require_relative 'game_methods'
 
 rps1 = Game.new
 
-rps1.setup ## set counters = 0
+rps1.setup # set counters = 0
 
 rps1.get_number_sets #requests number of sets to play per match
 

@@ -154,15 +154,15 @@ class Game
   #
   # SETS player score & RETURNS outcome notification 
   def battle_outcome()
-    if @player.get_battle() == 1
+    if get_battle() == 1
       set_games_won()
       return get_victory_confirmation() + " " + get_other_loss_confirmation()
 
-    elsif @player.get_battle() == 2
+    elsif get_battle() == 2
       set_other_games_won()
       return get_loss_confirmation() + " " + get_other_victory_confirmation()
 
-    else @player.get_battle() == 0
+    else get_battle() == 0
       set_games_tied()
       return get_tie_confirmation()
     end
@@ -261,18 +261,5 @@ class Game
     return "Both players tie with #{@player.get_weapon()}!"
   end
 ## END: TEXT-BASED NOTIFICATION METHODS
-
-## START: METHODS FOR TESTS ##
-  #
-  # RETURNS method String variable as @weapon Instance Variable for testing purposes
-  def set_weapon_for_tests(weapon)
-    @player.set_weapon_for_tests
-  end
-
-   # RETURNS method String variable as @other_weapon Instance Variable for testing purposes
-  def set_other_weapon_for_tests(other_weapon)
-    @player.set_other_weapon_for_tests
-  end
-  ## END: METHODS FOR TESTS ##
 
 end

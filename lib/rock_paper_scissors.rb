@@ -1,12 +1,19 @@
 
+
+
 class Game
 
-# Purpose: Initialize variables needed to play the game.
-#
-# Inputs: 
-# @player_1_score = an Integer that increases by 1 when player wins 1 game in the series.
-# @player_2_score = an Integer that increases by 1 when player wins 1 game in the series.
-#
+  # Purpose: Initialize variables needed to play the game.
+  # 
+  # Inputs: None
+
+  # 
+  # Returns:
+  # @player_1_name = a String typed in by a player at a prompt.
+  # @player_2_name = a String typed in by a player at a prompt. 
+  # @player_1_score = an Integer that increases by 1 when player wins 1 game in the series.
+  # @player_2_score = an Integer that increases by 1 when player wins 1 game in the series.
+  # @player_victory = an Integer equal to the number of games 1 player must win to win the series.
   def setup
 
     player_names
@@ -20,13 +27,9 @@ class Game
     @player_victory = (how_many_games + 1) / 2
   end
       
-# Purpose: Inform players who won the series.
-#
-# @player_1_score = an Integer that increases by 1 when player wins 1 game in the series.
-# @player_2_score = an Integer that increases by 1 when player wins 1 game in the series.
-# @player_victory = an Integer indicating the number of games a player must win to win the series.
-#
-# returns text to display who won the series and the final score.
+  # Purpose: Inform players who won the series.
+  #
+  # Returns: Puts who won the series and the final score.
   def display_end_of_series
     if @player_1_score == @player_victory 
         puts "Congratulations #{@player_1_name}"
@@ -37,14 +40,11 @@ class Game
     end
   end
 
-# Purpose: Inform players of the current score.
-#
-# Inputs: @player_1_name = a String typed in by Player 1.
-#         @player_2_name = a String typed in by Player 2.
-#         @player_1_score = an Integer that increases by 1 when Player 1 wins game in the series.
-#         @player_2_score = an Integer that increases by 1 when Player 2 wins game in the series.
-#
-# Returns players' names and their current score after each game in the series.
+  # Purpose: Inform players of the current score.
+  #
+  # Inputs: None
+  #
+  # Returns: A Puts showing players' names and their current score after each game in the series.
   def display_scoreboard
     puts "The score is"
     puts "#{@player_1_name}"+" #{@player_1_score}" 
@@ -52,27 +52,26 @@ class Game
     puts
   end
 
-# Purpose: To generate games until one player has won enough games to win the series.
-#
-# Inputs: 
-# @player_1_score = An Integer that increases by 1 when Player 1 wins 1 game.
-# @player_2_score = An Integer that increases by 1 when Player 2 wins 1 game.
-# @player_victory = An Integer. Number of games a player must win to win series.
-# choose_weapons = A Method that returns the players' weapons choices.
-# display_winner_one_game = a Method that returns the name of the winner of the game just completed, followed by "wins." Accepts the Method determine_winner_one_game as its argument.
-# accumulate_series_score = A Method that returns 1 if Player 1 wins and 2 if Player 2 wins.
-# display_scoreboard = A Method that returns the current series score.
-#
-# Returns the player who wins the series and the final score. 
+  # Purpose: To generate games until one player has won enough games to win the series.
+  #
+  # Inputs: 
+  #
+  # Return: A Puts showing the player who wins the series and the final score. 
   def keep_playing
     until @player_1_score == @player_victory or @player_2_score == @player_victory 
-      choose_weapons
+      set_weapon_p1(choose_weapons)
+      set_weapon_p2(choose_weapons)
       display_winner_one_game(determine_winner_one_game)
       accumulate_series_score(determine_winner_one_game)
       display_scoreboard
     end
   end
 
+  #Purpose: Apply victory in each game toward the players' series score.
+  #
+  #Inputs: The Integer returned from the Method determine_winner_one_game.
+  #
+  #Return: The Integer returned from the Method determine_winner_one_game with 1 added to it. 
   def accumulate_series_score(winner)
     if winner == 1
       return @player_1_score +=1
@@ -81,23 +80,22 @@ class Game
     end
   end
 
-#Purpose: Set the number of games one player must win to win the series.
-#
-#Inputs: match_duration = A String converted to an Integer by the method. It 
-#is the maximum number of games that could be played to determine the series #winner. It is typed in by a player.
-#
-#Returns the String typed in by the player, converted to an Integer.
+  #Purpose: Set the number of games one player must win to win the series.
+  #
+  #Inputs: match_duration = A String converted to an Integer by the method. It 
+  #is the maximum number of games that could be played to determine the series  #winner. It is typed in by a player.
+  #
+  #Returns the String typed in by the player, converted to an Integer.
   def how_many_games
     puts "Please enter 1, 3, 5, or 7 to choose how many games you want to play."
     match_duration = gets.chomp.to_i
   end
 
-#Purpose: Enable players to keyboard in the name they want to use in the game.
-#
-#Inputs: @player_1_name is a String provided by the player.
-#        @player_2_name is a String provided by the player.
-#
-#Returns a String provided by the player without alteration.
+  #Purpose: Enable players to type in the name they want to use in the game.
+  #
+  #Inputs: None
+  #
+  #Returns a String provided by the player without alteration.
   def player_names
     puts "What name do you want to use, Player 1?"
       @player_1_name = gets.chomp
@@ -105,25 +103,39 @@ class Game
       @player_2_name = gets.chomp
   end
 
-#Purpose: Initiate game play for 1 game of rock-paper-scissors.
-#
-#Inputs: @weapon_p1 = a String ("r," "p," or "s") typed in by Player 1.
-#        @weapon_p2 = a String ("r," "p," or "s") typed in by Player 2.
-#
-#Returns the player's selection, downcased if necessary.
+  #Purpose: Initiate game play for 1 game of rock-paper-scissors.
+  #
+  #Inputs: None
+  #
+  #Returns the player's selection, downcased if necessary.
   def choose_weapons
     puts "Choose 'r' for rock, 'p' for paper or 's' for scissors"
-      @weapon_p1 = gets.chomp.downcase
-    puts "Choose 'r' for rock, 'p' for paper or 's' for scissors" 
-      @weapon_p2 = gets.chomp.downcase
+      return gets.chomp.downcase
   end
  
-#Purpose: Determine who won 1 game.
-#
-#Inputs: @weapon_p1 = a String ("r," "p," or "s") typed in by Player 1.
-#        @weapon_p2 = a String ("r," "p," or "s") typed in by Player 2.
-#
-#Returns 1 if weapon_p1 has won, 2 if weapon_p2 has won, nil if a tie.      
+  #Purpose: Set Player 1's weapon.
+  #
+  #Inputs: A String generated by the Method choose_weapons.
+  #
+  #Returns the player's selection, downcased if necessary.
+  def set_weapon_p1(weapon)
+    @weapon_p1 = weapon
+  end
+
+  #Purpose: Set Player 2's weapon.
+  #
+  #Inputs: A String generated by the Method choose_weapons.
+  #
+  #Returns the player's selection, downcased if necessary.
+  def set_weapon_p2(weapon)
+    @weapon_p2 = weapon
+  end
+
+  #Purpose: Determine who won 1 game.
+  #
+  #Inputs: none
+  #
+  #Returns 1 if weapon_p1 has won, 2 if weapon_p2 has won, nil if a tie.      
   def determine_winner_one_game
     if @weapon_p1 == "r" && @weapon_p2 == "s"
       return 1 
@@ -144,14 +156,14 @@ class Game
     end      
   end
 
-# Purpose: To inform the players who won a single game.
-# 
-# Inputs: r = an Integer returned by the determine_winner_one_game method.
-#         r == 1 if Player 1 has won.
-#         r == 2 if Player 2 has won.
-#         
-#         
-# Returns: Puts a message to the command line stating who won, or noting a tie.
+  # Purpose: To inform the players who won a single game.
+  # 
+  # Inputs: r = an Integer returned by the determine_winner_one_game method.
+  #         r == 1 if Player 1 has won.
+  #         r == 2 if Player 2 has won.
+  #         
+  #         
+  # Returns: Puts a message to the command line stating who won, or noting a tie.
   def display_winner_one_game(r)
     if r == 1
       puts "#{@player_1_name} wins"
@@ -164,10 +176,7 @@ class Game
 
 end #this is the end of class
 
-new_game = Game.new
-new_game.setup
-new_game.keep_playing
-new_game.display_end_of_series
+
 
 
 

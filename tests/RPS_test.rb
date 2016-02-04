@@ -7,13 +7,13 @@ class RPSTest <  Minitest::Test
     x.setup
     play = "rock"
     refute_equal(nil, x.assign_play_value(play))
-    assert_equal(1, x.assign_play_value(play))
+    assert_equal(0, x.assign_play_value(play))
   end
 
   def test_turn_winner
     x=Game.new
     x.setup
-    move1, move2 = 3,2
+    move1, move2 = 2,1
     x.set_player1value("Steve")
     refute_equal(x.player1value, nil)
     assert_equal(x.player1value, x.turn_winner(move1,move2))

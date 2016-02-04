@@ -6,6 +6,9 @@ class Game
     @p2_wins = 0
   end
 
+  def req_set_num
+    gets.chomp.to_i
+  end
 
   # Defines the number of sets to be in a match
   #
@@ -14,9 +17,12 @@ class Game
   # Returns integer and calls it @match
   def get_number_sets
     puts "Enter the number of sets you would like to play"
-    @match = gets.chomp.to_i
+    determine_sets(req_set_num)
   end
 
+  def determine_sets(i)
+    @match = i.to_i
+  end
 
   # Defines when weapon is misspelled by player 1
   #
@@ -53,14 +59,48 @@ class Game
   # return string
   def weapon_for_player_1
     puts "Choose your weapon, Player 1"
-    @player_1_weapon = gets.chomp.downcase
+    set_weap_player_1(req_weap_player_1)
 
       until p1_misspelled_weapon
         @player_1_weapon = respell_weapon_text
       end
   end
 
-  
+  # Requests string from player 1
+  #
+  # Returns string
+  def req_weap_player_1
+    gets.chomp.downcase
+  end
+
+  # Requests string from player 2
+  #
+  # Returns string
+  def req_weap_player_2
+    gets.chomp.downcase
+  end
+
+
+  # Defines player 1 weapon as whatever is passed in
+  #
+  # string
+  #
+  # return string
+  def set_weap_player_1(str)
+    @player_1_weapon = str
+  end
+
+
+  # Defines player 2 weapon as whatever is passed in
+  #
+  # string
+  #
+  # return string
+  def set_weap_player_2(str)
+    @player_2_weapon = str
+  end
+
+
   # Combines methods to define player 1's weapon and make sure its spelled correctly
   #
   # user entry
@@ -68,7 +108,7 @@ class Game
   # return string
   def weapon_for_player_2
     puts "Choose your weapon, Player 2"
-    @player_2_weapon = gets.chomp.downcase
+    set_weap_player_2(req_weap_player_2)
 
       until p2_misspelled_weapon
         @player_2_weapon = respell_weapon_text
@@ -96,7 +136,7 @@ class Game
   end
 
 
-    # Displays tie set text
+  # Displays tie set text
   def tie_set_text
     puts "Tie set. No points awarded. Stop favoring rock!"
   end
@@ -238,7 +278,7 @@ class Game
 
   # Displays winning match player text
   def match_winner_text
-    puts player_with_highest_score.join.upcase + "WINS,!!!"
+    puts player_with_highest_score.join.upcase + " WINS,!!!"
   end
 
 

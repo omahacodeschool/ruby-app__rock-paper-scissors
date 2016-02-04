@@ -74,13 +74,13 @@ class RPS_Game
     @round_count += 1
   end
 
-  #def set_player1_weapon(x)
-  #  @weapon1 = x  
-  #end
+  def set_player1_weapon(x)
+    @weapon1 = x  
+  end
 
-  #def set_player2_weapon(x)
-  #  @weapon2 = x  
-  #end
+  def set_player2_weapon(x)
+    @weapon2 = x  
+  end
 
   def game_winner
     @who_won = {
@@ -94,7 +94,6 @@ class RPS_Game
       @win2 += 1
     else
     end
-    #binding.pry
   end
 
   def game_winner_text
@@ -130,6 +129,6 @@ class RPS_Game
   end
 end
 
-new_game = RPS_Game.new
+#new_game = RPS_Game.new
 
-new_game.best_of_5
+#new_game.best_of_5

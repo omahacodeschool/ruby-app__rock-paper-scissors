@@ -270,7 +270,7 @@ class Game
   end
 
    # RETURNS method String variable as @other_weapon Instance Variable for testing purposes
-  def set_other_weapon_for_tests(weapon)
+  def set_other_weapon_for_tests(other_weapon)
     @player.set_other_weapon_for_tests
   end
   ## END: METHODS FOR TESTS ##

@@ -1,7 +1,6 @@
 require_relative 'RPS_Game'
 
-players = Game.new()
-players.run_full_game()
+players = Game.new().run_full_game()
 
 
 

@@ -42,9 +42,9 @@ class Game
       return "draw"
     elsif (@p1_weapon == "rock" && @p2_weapon == "paper") || (@p1_weapon == "paper" && @p2_weapon == "rock")
       return "pcr"
-    elsif (p1_weapon == "paper" && p2_weapon == "scissors") || (p1_weapon == "scissors" && p2_weapon == "paper")
+    elsif (@p1_weapon == "paper" && @p2_weapon == "scissors") || (@p1_weapon == "scissors" && @p2_weapon == "paper")
       return "scp"
-    else (p1_weapon == "scissors" && p2_weapon == "rock") || (p1_weapon == "rock" && p2_weapon == "scissors")
+    else (@p1_weapon == "scissors" && @p2_weapon == "rock") || (@p1_weapon == "rock" && @p2_weapon == "scissors")
       return "rss"
     end
   end
@@ -67,7 +67,7 @@ class Game
     end
   end
 
-  def display_game_result_how_won(w, @p1_weapon, @p2_weapon)
+  def display_game_result_how_won(w, weapon_p1, weapon_p2)
     if w == "draw"
       return "#{@p1_weapon} equals #{@p2_weapon}"
     elsif w == "pcr"

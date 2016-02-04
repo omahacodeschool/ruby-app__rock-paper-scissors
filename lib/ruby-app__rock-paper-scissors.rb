@@ -2,15 +2,24 @@ require "pry"
 
 class RockPaperScissorsGame
 
+  #TEST METHODS______________________________________________
 
-  #TESTING_________________________________________________________
-
-  #NEEDS WORK  
-  #Make a method to insert user_name, number_needed_to_win, etc. 
-  #For testing purposes
-  def insert_variables_needed_to_run_test(name, num, etc)
-    #NEEDS CODE HERE
+  def set_user_weapon(x)
+    @user_weapon = x
   end
+   
+  def set_comp_weapon(x)
+    @computer_weapon = x
+  end 
+  
+  def set_number_of_sets_needed_to_win(x) 
+    @number_of_games_needed_to_win_set = x
+  end
+
+  def set_user_name(x)
+    @user_name = x
+  end
+
 
   #METHODS_________________________________________________________
 
@@ -30,9 +39,9 @@ class RockPaperScissorsGame
   #takes input (choice of rock, paper, or scissors) and only accepts first character. 
   #sets input to @user_weapon (ex: "r", "p", or "s")
   def user_chooses_weapon
-
+    
     @user_weapon = gets.downcase.slice!(0)
-   
+  
   end
 
   #puts introduction and rquest for user's name.
@@ -42,6 +51,7 @@ class RockPaperScissorsGame
     puts "_____________________________________________________________"
     puts "To play the RPS Thinking Machine v1.3, Please enter your name"
     puts "_____________________________________________________________"
+    
     @user_name = gets.chomp.capitalize
 
   end
@@ -384,7 +394,9 @@ class RockPaperScissorsGame
     sleep @time_between_ascii_lines_intro
     puts ''
     puts '                                                 by J8R8MY, 2016'
-
+    
+  
+  
   end
 
   #gives {@user_name} an option of' weapons ("[R]ock, [P]aper, or [S]cissors?") 
@@ -541,4 +553,3 @@ class RockPaperScissorsGame
   end
 
 end
-  

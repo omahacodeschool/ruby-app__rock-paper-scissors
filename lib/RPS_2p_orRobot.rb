@@ -1,16 +1,11 @@
 class Game
-  ###########################
-
-  #run_game is the actual RPS game
-  #plays game, declares winner, keeps track of victories
-  # => a message congratulating the RPS Champion
+ 
   def run_game
     setup
     v=establish_v
     @Player1 = player_names(1)
-    @Player2 = player_names(2)
-    
-
+    p_or_Robot
+    x.letsdothis
     until champion(v) != nil
       move1, move2 = ask_for_move
       move1,move2 = unique_situation(move1,move2)     
@@ -19,7 +14,44 @@ class Game
       track_victory(temp_winner)   
     end 
     congrats_champion(champion(v))   
+  end  
+  
+  class PGame
+    def letsdothis
+      @Player2 = player_names(2)
+      until champion(v) != nil
+        move1, move2 = ask_for_move
+        move1,move2 = unique_situation(move1,move2)     
+        temp_winner = turn_winner(move1,move2)
+        congrats_winner(temp_winner)
+        track_victory(temp_winner) 
+      end  
+    end 
+    congrats_champion(champion(v))   
+  end 
+  
+  class RobotGame
+    def letsdothis
+
   end
+
+
+
+  def p_or_Robot
+    puts "Okay, " + @Player1 + ", would you like to play with another human (P) or a Robot (R)?"
+    if gets.chomp. == "p"
+      x = PGame.new
+    end
+    if gets.chomp == "r"
+      x = RobotGame.new
+    end
+  end
+  ###########################
+
+  #run_game is the actual RPS game
+  #plays game, declares winner, keeps track of victories
+  # => a message congratulating the RPS Champion
+
 
   #ALGORYTHMIC METHODS
 
@@ -165,6 +197,6 @@ class Game
   def set_player1value(banana)
     @Player1 = banana
   end
-
+end
 test_game=Game.new
 test_game.run_game

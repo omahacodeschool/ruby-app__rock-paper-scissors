@@ -133,5 +133,3 @@ def rock_paper_scissors
 
   display_set_winner       
 end
-
-rock_paper_scissors()

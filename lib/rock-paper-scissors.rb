@@ -1,92 +1,137 @@
-def rock_paper_scissors
+def set_intial_values
+  $which_game = 1
+  $player1_wins = 0
+  $player2_wins = 0
+end
 
+def welcome
   puts "Let's play Rock-Paper-Scissors!"
-  
   puts "\nHow many games would you like to play?"
-  total_games = gets.chomp.to_i
-  
-  if total_games == 2
-    wins_needed = 1
+  gets.chomp.to_i
+end
+
+def get_total_games
+
+  $total_games = welcome
+    
+  if $total_games == 2
+    $wins_needed = 1
   else
-    wins_needed  = (total_games / 2) + 1
+    $wins_needed  = ($total_games / 2) + 1
   end
 
-  puts "\nGreat! Best #{wins_needed} out of #{total_games}!"
+  puts "\nGreat! Best #{$wins_needed} out of #{$total_games}!"
+end
 
-  which_game = 1
-  player1_wins = 0
-  player2_wins = 0
+def game_format_setup
+  puts "--------------------------------------------------------------------"
+  puts "\nGame #{$which_game}! Commence!\n"
+end  
+
+def intermediary_message
+  puts "\nOkay! Player1, hand Player 2 the computer and look away."
+end
+
+def get_player1_move
+  puts "\nPlayer 1: What's your move?"
+  $player1_move = gets.chomp.capitalize
+  intermediary_message
+end
+
+def get_player2_move
+  puts "\nPlayer 2: What's your move?"
+  $player2_move = gets.chomp.capitalize
+end
+
+def determine_game_winner
+
+  if $player1_move == "Rock"
+      if $player2_move == "Paper"
+        return 2
+      elsif $player2_move == "Scissors"
+        return 1
+      else
+        return nil
+      end
+    elsif $player1_move == "Paper"
+      if $player2_move == "Scissors"
+        return 2
+      elsif $player2_move == "Rock"
+        return 1
+        player1_
+      else
+        return nil 
+      end
+    elsif $player1_move == "Scissors"
+      if $player2_move == "Rock"
+        return 2
+        player2_
+      elsif $player2_move == "Paper"
+        return 1
+        player1_
+      else
+        return nil
+        
+      end  
+    end    
+end
+
+def track_player_wins(num)
+
+  if num == 1
+    $player1_wins += 1
+  elsif num == 2
+    $player2_wins += 1
+  end
+end
+
+def game_outcomes(num)
+  if num == 1
+    puts "\n#{$player1_move} beats #{$player2_move}! Player 1 Wins!"
+    puts "--------------------------------------------------------------------"
+  elsif num == 2
+    puts "\n#{$player2_move} beats #{$player1_move}! Player 2 Wins!"
+    puts "--------------------------------------------------------------------"
+  else
+    puts "\nIt's a Tie! Get Ready for Game #{($which_game + 1)}!"
+    puts "--------------------------------------------------------------------"
+  end
+end
+
+
+def display_set_winner
+  if $player1_wins > $player2_wins
+      puts "\nCongratulations Player 1! You take the cake with a score of #{$player1_wins} to #{$player2_wins}!"
+    elsif $player2_wins > $player1_wins
+      puts "\nCongratulations Player 2! You take the cake with a score of #{$player2_wins} to #{$player1_wins}!"
+    else
+      puts "\nWhat a grueling battle with no clear winner! Care to settle the score?"
+  end
+end
+
+def rock_paper_scissors
+
+  set_intial_values
+  get_total_games
   
-
-  while which_game <= total_games
+  while $which_game <= $total_games
     
-    if player1_wins == wins_needed || player2_wins == wins_needed
+    if $player1_wins == $wins_needed || $player2_wins == $wins_needed
         break
     end
 
-    puts "--------------------------------------------------------------------"
-    puts "\nGame #{which_game}! Commence!\n"
-    puts "\nPlayer 1: What's your move?"
-    player1_move = gets.chomp.capitalize
+    game_format_setup  
+    get_player1_move
+    get_player2_move
+    
+    winner = determine_game_winner
+    track_player_wins(winner)
+    game_outcomes(winner)
 
-    puts "\nOkay! Player1, hand Player 2 the computer and look away."
-    puts "\nPlayer 2: What's your move?"
-    player2_move = gets.chomp.capitalize
-
-    if player1_move == "Rock"
-      if player2_move == "Paper"
-        puts "\n#{player2_move} beats #{player1_move}! Player 2 Wins!"
-        puts "--------------------------------------------------------------------"
-        player2_wins += 1
-      elsif player2_move == "Scissors"
-        puts "\n#{player1_move} beats #{player2_move}! Player 1 Wins!"
-        puts "--------------------------------------------------------------------"
-        player1_wins += 1
-      else
-        puts "\nIt's a Tie! Get Ready for Game #{(which_game + 1)}!"
-        puts "--------------------------------------------------------------------"
-      end
-    elsif player1_move == "Paper"
-      if player2_move == "Scissors"
-        puts "\n#{player2_move} beats #{player1_move}! Player 2 Wins!"
-        puts "--------------------------------------------------------------------"
-        player2_wins += 1
-      elsif player2_move == "Rock"
-        puts "\n#{player1_move} beats #{player2_move}! Player 1 Wins!"
-        puts "--------------------------------------------------------------------"
-        player1_wins += 1
-      else
-        puts "\nIt's a Tie! Get Ready for Game #{(which_game + 1)}!"
-        puts "--------------------------------------------------------------------"
-      end
-    elsif player1_move == "Scissors"
-      if player2_move == "Rock"
-        puts "\n#{player2_move} beats #{player1_move}! Player 2 Wins!"
-        puts "--------------------------------------------------------------------"
-        player2_wins += 1
-      elsif player2_move == "Paper"
-        puts "\n#{player1_move} beats #{player2_move}! Player 1 Wins!"
-        puts "--------------------------------------------------------------------"
-        player1_wins += 1
-      else
-        puts "\nIt's a Tie! Get Ready for Game #{(which_game + 1)}!"
-        puts "--------------------------------------------------------------------"
-      end      
-
-    end
-
-    which_game += 1
+    $which_game += 1
   end
 
-    if player1_wins > player2_wins
-      puts "\nCongratulations Player 1! You take the cake with #{player1_wins} to #{player2_wins}!"
-    elsif player2_wins > player1_wins
-      puts "\nCongratulations Player 2! You take the cake with #{player2_wins} to #{player1_wins}!"
-    else
-      puts "\nWhat a grueling battle with no clear winner! Care to settle the score?"
-    end
-
-      
+  display_set_winner       
 end
 
 rock_paper_scissors()

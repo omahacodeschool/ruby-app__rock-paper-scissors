@@ -2,9 +2,7 @@ require "pry"
 
 class RockPaperScissorsGame
 
-  #TEST METHODS______________________________________________
-
-  def set_user_weapon(x)
+ def set_user_weapon(x)
     @user_weapon = x
   end
    
@@ -20,6 +18,13 @@ class RockPaperScissorsGame
     @user_name = x
   end
 
+  #Players named Jeremy will always win or tie.
+  def set_cheat
+    @cheat = false
+    if @user_name == 'JEREMY'
+      @cheat = true
+    end
+  end
 
   #METHODS_________________________________________________________
 
@@ -44,7 +49,7 @@ class RockPaperScissorsGame
   
   end
 
-  #puts introduction and rquest for user's name.
+  #puts introduction and request for user's name.
   #gets name, chomped and capitalized
   #sets @user_name
   def put_intro_and_get_username
@@ -68,9 +73,11 @@ class RockPaperScissorsGame
   #comp makes random integer selection (0, 1, or 2)
   #sets the variable @computer_weapon_power to the random integer
   def computer_picks_weapon
-
-    @computer_weapon_power = rand(0..2)
-
+    if @cheat
+      @computer_weapon_power = rand(0..1)
+    else
+      @computer_weapon_power = rand(0..2)
+    end
   end
 
 
@@ -517,6 +524,8 @@ class RockPaperScissorsGame
     start_up
     
     put_intro_and_get_username
+
+    set_cheat
     
     ask_user_how_many_games_needed_to_win
     
@@ -551,5 +560,4 @@ class RockPaperScissorsGame
       end_of_set_game_over
 
   end
-
 end

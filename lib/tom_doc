@@ -1,0 +1,9 @@
+#TomDoc
+
+#Briefly, what does this method do?
+
+#Does this method have any parameters? If so, list them. Be sure to include the type of data that the parameter would be (e.g. a String, Array, Integer, Boolean, Hash, etc).
+
+#What does this method return when it's finished doing its business? Be sure to include the type of data.
+
+#Does this method change any properties? If so, list them.

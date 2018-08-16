@@ -2,6 +2,7 @@ class RockPaperScissors
   def initialize
 
 
+
   end
 end
 
@@ -15,9 +16,21 @@ class Game
     @p2_weapon = weapon_p2
   end
 
+  def how_won(weapon_p1, weapon_p2)
+    if (@p1_weapon == "rock" && @p2_weapon == "paper") || (@p1_weapon == "paper" && @p2_weapon == "rock")
+      return "pcr"
+    elsif (@p1_weapon == "rock" && @p2_weapon == "scissors") || (@p1_weapon == "scissors" && @p2_weapon == "rock")
+      return "rss"
+    elsif (@p1_weapon == "paper" && @p2_weapon == "scissors") || (@p1_weapon == "scissors" && @p2_weapon == "paper")
+      return "scp"
+    else
+      return nil
+    end 
+  end
+
   # Defines who won the simple game.
   # Returns an Integer 1, 2, or nil.
-  def winner(weapon_p1, weapon_p2)
+  def who_won(weapon_p1, weapon_p2)
     if @p1_weapon == "rock" && @p2_weapon == "scissors"
       return 1
     elsif @p1_weapon == "paper" && @p2_weapon == "rock"
@@ -35,24 +48,41 @@ class Game
     end    
   end
 
-  def game_winner_display
-    if winner == 1
+  def display_how_won(hw, weapon_p1, weapon_p2)
+    if hw == "pcr"
+      return "Paper Covers Rock"
+    elsif hw == "rss"
+      return "Rock Smashes Scissors"
+    elsif hw == "scp"
+      return "Scissors Cut Paper"
+    else hw == nil
+      return "#{weapon_p1} equals #{weapon_p2}"
+    end
+  end
+
+  def display_who_won(ww)
+    if ww == 1
       return "Player 1 wins!"
-    elsif winner == 2
+    elsif ww == 2
       return "Player 2 wins!"
-    else winner == nil
+    else ww == nil
       return "It's a draw!"
     end
   end
 
-  def game_winner_count
-    if winner == 1
+  def game_win_count(ww)
+    if ww == 1
       return @p1_game_win += 1
-    elsif winner == 2
+    elsif ww == 2
       return @p2_game_win += 1
-    else winner == nil
+    else ww == nil
       return nil
     end
+  end
+
+  def display_game_win_count(game_wins_p1, game_wins_p2)
+    return "The Score is "
+
   end
 
 end
